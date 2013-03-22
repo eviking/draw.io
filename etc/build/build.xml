@@ -7,7 +7,7 @@
 	<!-- ============ Merges and minimizes JavaScript code into one file =============== -->
 	
 	<target name="compile">
-		<jscomp compilationLevel="simple" debug="false" output="${basedir}/../../war/js/diagramly.min.js">
+		<jscomp compilationLevel="simple" debug="false" forceRecompile="true" output="${basedir}/../../war/js/diagramly.min.js">
 			<sources dir="${basedir}/../../etc/mxgraph">
 				<file name="mxClient.js" />
 			</sources>
@@ -27,6 +27,8 @@
 			<sources dir="${basedir}/../../war/js/diagramly">
 				<file name="GoogleDrive.js" />
 				<file name="Integration.js" />
+				<file name="rt-client-utils.js" />
+				<file name="ChatWindow.js" />
 				<file name="Dialogs.js" />
 				<file name="Sidebar.js" />
 				<file name="EditorUi.js" />

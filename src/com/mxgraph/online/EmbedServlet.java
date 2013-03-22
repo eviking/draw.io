@@ -1,5 +1,5 @@
 /**
- * $Id: EmbedServlet.java,v 1.11 2013-02-04 09:40:15 gaudenz Exp $
+ * $Id: EmbedServlet.java,v 1.13 2013/03/18 08:55:45 david Exp $
  * Copyright (c) 2011-2012, JGraph Ltd
  * 
  * TODO
@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -106,6 +105,16 @@ public class EmbedServlet extends HttpServlet
 	public void initLibraries()
 	{
 		libraries.put("bpmn", new String[]{"/shapes/bpmn/mxBpmnShape2.js", "/stencils/bpmn.xml"});
+		libraries.put("er", new String[]{"/shapes/er/mxER.js"});
+		libraries.put("ios", new String[]{"/shapes/mockup/mxMockupiOS.js"});
+		libraries.put("mockup/buttons", new String[]{"/shapes/mockup/mxMockupButtons.js"});
+		libraries.put("mockup/containers", new String[]{"/shapes/mockup/mxMockupContainers.js"});
+		libraries.put("mockup/forms", new String[]{"/shapes/mockup/mxMockupForms.js"});
+		libraries.put("mockup/graphics", new String[]{"/shapes/mockup/mxMockupGraphics.js", "/stencils/mockup/misc.xml"});
+		libraries.put("mockup/markup", new String[]{"/shapes/mockup/mxMockupMarkup.js"});
+		libraries.put("mockup/misc", new String[]{"/shapes/mockup/mxMockupMisc.js", "/stencils/mockup/misc.xml"});
+		libraries.put("mockup/navigation", new String[]{"/shapes/mockup/mxMockupNavigation.js", "/stencils/mockup/misc.xml"});
+		libraries.put("mockup/text", new String[]{"/shapes/mockup/mxMockupText.js"});
 	}
 
 	/**

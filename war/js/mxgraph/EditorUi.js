@@ -1,5 +1,5 @@
 /**
- * $Id: EditorUi.js,v 1.19 2013-02-02 14:28:02 gaudenz Exp $
+ * $Id: EditorUi.js,v 1.21 2013/03/14 20:46:36 david Exp $
  * Copyright (c) 2006-2012, JGraph Ltd
  */
 /**
@@ -778,6 +778,9 @@ EditorUi.prototype.executeLayout = function(layout, animate, ignoreChildCount)
 {
 	var graph = this.editor.graph;
 	var cell = graph.getSelectionCell();
+	
+	// Allow global overridding of animation
+	animate = this.animate != null ? this.animate : animate;
 
 	graph.getModel().beginUpdate();
 	try
@@ -850,7 +853,7 @@ EditorUi.prototype.createKeyHandler = function(editor)
     		}
     		
     		graph.moveCells(graph.getSelectionCells(), dx, dy);
-    		graph.scrollCellVisible(graph.getSelectionCell());
+    		graph.scrollCellToVisible(graph.getSelectionCell());
 		}
     };
 

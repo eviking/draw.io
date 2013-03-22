@@ -1,5 +1,5 @@
 /**
- * $Id: Menus.js,v 1.12 2013-01-29 08:45:42 gaudenz Exp $
+ * $Id: Menus.js,v 1.13 2013-02-20 16:21:29 gaudenz Exp $
  * Copyright (c) 2006-2012, JGraph Ltd
  */
 /**
@@ -68,8 +68,8 @@ Menus.prototype.init = function()
 		this.styleChange(menu, mxResources.get('horizontal'), [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW], ['elbowEdgeStyle', 'horizontal'], null, parent);
 		this.styleChange(menu, mxResources.get('vertical'), [mxConstants.STYLE_EDGE, mxConstants.STYLE_ELBOW], ['elbowEdgeStyle', 'vertical'], null, parent);
 		menu.addSeparator(parent);
-		this.styleChange(menu, mxResources.get('plain'), [mxConstants.STYLE_EDGE], ['segmentEdgeStyle'], null, parent);
-		this.styleChange(menu, mxResources.get('orthogonal'), [mxConstants.STYLE_EDGE], ['orthogonalEdgeStyle'], null, parent);
+		this.styleChange(menu, mxResources.get('manual'), [mxConstants.STYLE_EDGE], ['segmentEdgeStyle'], null, parent);
+		this.styleChange(menu, mxResources.get('automatic'), [mxConstants.STYLE_EDGE], ['orthogonalEdgeStyle'], null, parent);
 	})));
 	this.put('lineend', new Menu(mxUtils.bind(this, function(menu, parent)
 	{

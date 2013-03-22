@@ -1,5 +1,5 @@
 /**
- * $Id: Actions.js,v 1.6 2013-01-17 13:42:26 gaudenz Exp $
+ * $Id: Actions.js,v 1.7 2013-02-14 07:48:01 gaudenz Exp $
  * Copyright (c) 2006-2012, JGraph Ltd
  */
 /**
@@ -492,7 +492,20 @@ Actions.prototype.init = function()
 			if (handler instanceof mxEdgeHandler)
 			{
 				var t = graph.view.translate;
-				handler.addPointAt(handler.state, graph.panningHandler.triggerX - t.x, graph.panningHandler.triggerY - t.y);
+				var s = graph.view.scale;
+				var dx = t.x;
+				var dy = t.y;
+				
+				var parent = graph.getModel().getParent(cell);
+				var pgeo = graph.getCellGeometry(parent);
+				
+				if (graph.getModel().isVertex(parent) && pgeo != null)
+				{
+					dx += pgeo.x;
+					dy += pgeo.y;
+				}
+				
+				handler.addPointAt(handler.state, graph.panningHandler.triggerX / s - dx, graph.panningHandler.triggerY / s - dy);
 			}
 		}
 	});

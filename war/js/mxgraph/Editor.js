@@ -1,5 +1,5 @@
 /**
- * $Id: Editor.js,v 1.13 2013-02-02 15:53:46 gaudenz Exp $
+ * $Id: Editor.js,v 1.14 2013/03/06 17:57:10 boris Exp $
  * Copyright (c) 2006-2012, JGraph Ltd
  */
 // Specifies if local storage should be used (eg. on the iPad which has no filesystem)
@@ -80,9 +80,13 @@ Editor = function()
 	this.modified = false;
 
 	// Updates modified state if graph changes
-	this.graph.getModel().addListener(mxEvent.CHANGE, mxUtils.bind(this, function()
+	this.graphChangeListener = function() 
 	{
 		this.modified = true;
+	};
+	this.graph.getModel().addListener(mxEvent.CHANGE, mxUtils.bind(this, function()
+	{
+		this.graphChangeListener.apply(this, arguments);
 	}));
 	
 	// Installs dialog if browser window is closed without saving

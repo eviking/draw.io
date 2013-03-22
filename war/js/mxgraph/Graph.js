@@ -1,5 +1,5 @@
 /**
- * $Id: Graph.js,v 1.12 2013-02-02 15:37:13 gaudenz Exp $
+ * $Id: Graph.js,v 1.14 2013-02-16 10:19:54 gaudenz Exp $
  * Copyright (c) 2006-2012, JGraph Ltd
  */
 /**
@@ -19,6 +19,7 @@ Graph = function(container, model, renderHint, stylesheet)
 	this.setAllowLoops(true);
 	this.allowAutoPanning = true;
 	this.resetEdgesOnConnect = false;
+	this.constrainChildren = false;
 	
 	// Enables cloning of connection sources
 	this.connectionHandler.setCreateTarget(true);
@@ -440,7 +441,7 @@ Graph.prototype.initTouch = function()
 (function()
 {
 	// Enables rotation handle
-	mxVertexHandler.prototype.rotationEnabled = urlParams['rotation'] == '1';
+	mxVertexHandler.prototype.rotationEnabled = true;
 	
 	// Matches label positions of mxGraph 1.x
 	mxText.prototype.baseSpacingTop = 5;

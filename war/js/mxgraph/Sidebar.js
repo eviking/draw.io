@@ -1,5 +1,5 @@
 /**
- * $Id: Sidebar.js,v 1.32 2013-02-02 14:28:02 gaudenz Exp $
+ * $Id: Sidebar.js,v 1.38 2013/02/28 14:45:22 david Exp $
  * Copyright (c) 2006-2012, JGraph Ltd
  */
 /**
@@ -346,32 +346,32 @@ Sidebar.prototype.addGeneralPalette = function(expand)
 {
 	this.addPalette('general', mxResources.get('general'), expand || true, mxUtils.bind(this, function(content)
 	{
-		content.appendChild(this.createVertexTemplate('swimlane', 200, 200, 'Container', 'Container', true));
-	    content.appendChild(this.createVertexTemplate(null, 120, 60, '', 'Rectangle', true));
-	    content.appendChild(this.createVertexTemplate('rounded=1', 120, 60, '', 'Rounded Rectangle', true));
+		content.appendChild(this.createVertexTemplate('swimlane;whiteSpace=wrap', 200, 200, 'Container', 'Container', true));
+	    content.appendChild(this.createVertexTemplate('whiteSpace=wrap', 120, 60, '', 'Rectangle', true));
+	    content.appendChild(this.createVertexTemplate('rounded=1;whiteSpace=wrap', 120, 60, '', 'Rounded Rectangle', true));
 	    content.appendChild(this.createVertexTemplate('text;spacingTop=-5;', 30, 20, 'Text', 'Text', true));
-	    content.appendChild(this.createVertexTemplate('ellipse', 80, 80, '', 'Circle', true));
-	    content.appendChild(this.createVertexTemplate('ellipse;shape=doubleEllipse', 80, 80, '', 'Double Ellipse', true));
-	    content.appendChild(this.createVertexTemplate('shape=ext;double=1', 120, 60, 'Double Rectangle', 'Double Rectangle', true));
-	    content.appendChild(this.createVertexTemplate('shape=ext;double=1;rounded=1', 120, 60, 'Double\nRounded Rectangle', 'Double Rounded Rectangle', true));
-	    content.appendChild(this.createVertexTemplate('shape=cylinder', 60, 80, '', 'Cylinder', true));
-	    content.appendChild(this.createVertexTemplate('rhombus', 80, 80, '', 'Rhombus', true));
-	    content.appendChild(this.createVertexTemplate('shape=hexagon', 120, 80, '', 'Hexagon', true));
-	    content.appendChild(this.createVertexTemplate('triangle', 60, 80, '', 'Triangle', true));
-	    content.appendChild(this.createVertexTemplate('shape=tape', 120, 100, '', 'Tape', true));
-	    content.appendChild(this.createVertexTemplate('shape=xor', 60, 80, '', 'Exclusive Or', true));
-	    content.appendChild(this.createVertexTemplate('shape=or', 60, 80, '', 'Or', true));
-	    content.appendChild(this.createVertexTemplate('shape=step', 120, 80, '', 'Step', true));
-	    content.appendChild(this.createVertexTemplate('shape=cube', 120, 80, '', 'Cube', true));
-	    content.appendChild(this.createVertexTemplate('shape=note', 80, 100, '', 'Note', true));
-	    content.appendChild(this.createVertexTemplate('shape=folder', 120, 120, '', 'Folder', true));
-	    content.appendChild(this.createVertexTemplate('shape=card', 60, 80, '', 'Card', true));
-	    content.appendChild(this.createVertexTemplate('shape=message', 60, 40, '', 'Message', true));
-	    content.appendChild(this.createVertexTemplate('shape=actor', 40, 60, '', 'Actor 1', true));
+	    content.appendChild(this.createVertexTemplate('ellipse;whiteSpace=wrap', 80, 80, '', 'Circle', true));
+	    content.appendChild(this.createVertexTemplate('ellipse;shape=doubleEllipse;whiteSpace=wrap', 80, 80, '', 'Double Ellipse', true));
+	    content.appendChild(this.createVertexTemplate('shape=ext;double=1;whiteSpace=wrap', 120, 60, 'Double Rectangle', 'Double Rectangle', true));
+	    content.appendChild(this.createVertexTemplate('shape=ext;double=1;rounded=1;whiteSpace=wrap', 120, 60, 'Double\nRounded Rectangle', 'Double Rounded Rectangle', true));
+	    content.appendChild(this.createVertexTemplate('shape=cylinder;whiteSpace=wrap', 60, 80, '', 'Cylinder', true));
+	    content.appendChild(this.createVertexTemplate('rhombus;whiteSpace=wrap', 80, 80, '', 'Rhombus', true));
+	    content.appendChild(this.createVertexTemplate('shape=hexagon;whiteSpace=wrap', 120, 80, '', 'Hexagon', true));
+	    content.appendChild(this.createVertexTemplate('triangle;whiteSpace=wrap', 60, 80, '', 'Triangle', true));
+	    content.appendChild(this.createVertexTemplate('shape=tape;whiteSpace=wrap', 120, 100, '', 'Tape', true));
+	    content.appendChild(this.createVertexTemplate('shape=xor;whiteSpace=wrap', 60, 80, '', 'Exclusive Or', true));
+	    content.appendChild(this.createVertexTemplate('shape=or;whiteSpace=wrap', 60, 80, '', 'Or', true));
+	    content.appendChild(this.createVertexTemplate('shape=step;whiteSpace=wrap', 120, 80, '', 'Step', true));
+	    content.appendChild(this.createVertexTemplate('shape=cube;whiteSpace=wrap', 120, 80, '', 'Cube', true));
+	    content.appendChild(this.createVertexTemplate('shape=note;whiteSpace=wrap', 80, 100, '', 'Note', true));
+	    content.appendChild(this.createVertexTemplate('shape=folder;whiteSpace=wrap', 120, 120, '', 'Folder', true));
+	    content.appendChild(this.createVertexTemplate('shape=card;whiteSpace=wrap', 60, 80, '', 'Card', true));
+	    content.appendChild(this.createVertexTemplate('shape=message;whiteSpace=wrap', 60, 40, '', 'Message', true));
+	    content.appendChild(this.createVertexTemplate('shape=actor;whiteSpace=wrap', 40, 60, '', 'Actor 1', true));
 	    content.appendChild(this.createVertexTemplate('icon;image=' + this.gearImage, 60, 60, 'Image', 'Image', false));
-	    content.appendChild(this.createVertexTemplate('label;image=' + this.gearImage, 140, 60, 'Label', 'Label', true));
+	    content.appendChild(this.createVertexTemplate('whiteSpace=wrap;label;image=' + this.gearImage, 140, 60, 'Label', 'Label', true));
 	    content.appendChild(this.createVertexTemplate('shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top', 30, 60, '', 'Actor 2', true));
-	    content.appendChild(this.createVertexTemplate('ellipse;shape=cloud', 120, 80, '', 'Cloud', true));
+	    content.appendChild(this.createVertexTemplate('ellipse;shape=cloud;whiteSpace=wrap', 120, 80, '', 'Cloud', true));
 	    content.appendChild(this.createVertexTemplate('line', 160, 10, '', 'Horizontal Line', true));
 	    content.appendChild(this.createVertexTemplate('line;direction=south', 10, 160, '', 'Vertical Line', true));
 
@@ -391,8 +391,8 @@ Sidebar.prototype.addGeneralPalette = function(expand)
 	    content.appendChild(this.createEdgeTemplate('edgeStyle=elbowEdgeStyle;elbow=horizontal', 100, 100, '', 'Horizontal Elbow', true));
 	    content.appendChild(this.createEdgeTemplate('edgeStyle=elbowEdgeStyle;elbow=vertical', 100, 100, '', 'Vertical Elbow', true));
 	    content.appendChild(this.createEdgeTemplate('edgeStyle=entityRelationEdgeStyle', 100, 100, '', 'Entity Relation', true));
-	    content.appendChild(this.createEdgeTemplate('edgeStyle=segmentEdgeStyle', 100, 100, '', 'Segmented Line', true));
-	    content.appendChild(this.createEdgeTemplate('edgeStyle=orthogonalEdgeStyle', 100, 100, '', 'Orthogonal Line', true));
+	    content.appendChild(this.createEdgeTemplate('edgeStyle=segmentEdgeStyle', 100, 100, '', 'Manual Line', true));
+	    content.appendChild(this.createEdgeTemplate('edgeStyle=orthogonalEdgeStyle', 100, 100, '', 'Automatic Line', true));
 	    content.appendChild(this.createEdgeTemplate('shape=link', 100, 100, '', 'Link', true));
 	    content.appendChild(this.createEdgeTemplate('arrow', 100, 100, '', 'Arrow', true));
 	}));
@@ -478,7 +478,8 @@ Sidebar.prototype.addUmlPalette = function(expand)
 				'</table>', new mxGeometry(0, 0, 180, 90), 'verticalAlign=top;align=left;overflow=fill;html=1');
     	tableCell.vertex = true;
     	content.appendChild(this.createVertexTemplateFromCells([tableCell], 180, 90, 'Entity', true));
-    	
+	    content.appendChild(this.createVertexTemplate('shape=note', 80, 100, '', 'Note', true));
+
     	content.appendChild(this.createVertexTemplate('shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top', 40, 80, 'Actor', 'Actor', false));
 	    content.appendChild(this.createVertexTemplate('ellipse', 140, 70, 'Use Case', 'Use Case', true));
 
@@ -818,7 +819,6 @@ Sidebar.prototype.createThumb = function(cells, width, height, parent, title, sh
 		node = this.graph.view.getCanvas().ownerSVGElement.cloneNode(true);
 	}
 	// LATER: Check if deep clone can be used for quirks if container in DOM
-	// KNOKWN: No cell labels visible in IE10.
 	else
 	{
 		node = this.graph.container.cloneNode(false);
@@ -858,16 +858,12 @@ Sidebar.prototype.createThumb = function(cells, width, height, parent, title, sh
 		div.style.textAlign = 'center';
 		div.style.whiteSpace = 'nowrap';
 		
-		if (mxClient.IS_QUIRKS)
+		if (mxClient.IS_IE)
 		{
 			div.style.height = (this.sidebarTitleSize + 12) + 'px';
-			div.style.paddingTop = '4px';
 		}
-		else
-		{
-			div.style.paddingTop = this.sidebarTitleSize + 'px';
-		}
-		
+
+		div.style.paddingTop = '4px';
 		mxUtils.write(div, title);
 		parent.appendChild(div);
 	}
@@ -1244,7 +1240,7 @@ Sidebar.prototype.addStencilPalette = function(id, title, stencilFile, style, ig
 			if (ignore == null || mxUtils.indexOf(ignore, stencilName) < 0)
 			{
 				content.appendChild(this.createVertexTemplate('shape=' + packageName + stencilName.toLowerCase() + style,
-					Math.round(w * scale), Math.round(h * scale), ''));
+					Math.round(w * scale), Math.round(h * scale), '', stencilName.replace(/_/g, ' '), true));
 			}
 		}), true);
     }));

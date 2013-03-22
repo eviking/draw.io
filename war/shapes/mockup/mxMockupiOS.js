@@ -1,5 +1,5 @@
 /**
- * $Id: mxMockupiPhone.js,v 1.4 2013-01-22 09:56:51 mate Exp $
+ * $Id: mxMockupiOS.js,v 1.3 2013/02/28 13:49:43 mate Exp $
  * Copyright (c) 2006-2010, JGraph Ltd
  */
 
@@ -18,6 +18,91 @@ function mxShapeMockupiPhone(bounds, fill, stroke, strokewidth)
 	this.strokewidth = (strokewidth != null) ? strokewidth : 1;
 };
 
+var mxMockupC =
+{
+		BAR_HEIGHT : 'barHeight',
+		BAR_POS : 'barPos',
+		BG_STYLE : 'bgStyle',
+		BG_FLAT_GREEN : 'bgGreen',
+		BG_FLAT_WHITE : 'bgWhite',
+		BG_FLAT_GRAY : 'bgGray',
+		BG_FLAT_CUSTOM : 'bgFlat',
+		BG_MAP : 'bgMap',
+		BG_STRIPED : 'bgStriped',
+		BUTTON_STYLE : 'buttonStyle',
+		BUTTON_TEXT : 'buttonText',
+		BUTTON_STATE : 'buttonState',
+		CHEVRON : 'chevron',
+		GRID_SIZE : 'gridSize',
+		POINTER_BOTTOM : 'bottom',
+		POINTER_POS : 'pointerPos',
+		POINTER_TOP : 'top',
+		ROUND : 'round',
+		SELECTED : '+', 		//has to be one character long
+		STATE_ON : 'on',
+		STATE_OFF : 'off',
+		SUB_TEXT : 'subText',
+		
+		SHAPE_IADD_ICON : 'mxgraph.ios.iAddIcon',
+		SHAPE_IALERT_BOX : 'mxgraph.ios.iAlertBox',
+		SHAPE_IALPHA_LIST : 'mxgraph.ios.iAlphaList',
+		SHAPE_IAPP_BAR : 'mxgraph.ios.iAppBar',
+		SHAPE_IARROW_ICON : 'mxgraph.ios.iArrowIcon',
+		SHAPE_IBG_FLAT : 'mxgraph.ios.iBgFlat',
+		SHAPE_IBG_MAP : 'mxgraph.ios.iBgMap',
+		SHAPE_IBG_STRIPED : 'mxgraph.ios.iBgStriped',
+		SHAPE_IBUTTON : 'mxgraph.ios.iButton',
+		SHAPE_IBUTTON_BACK : 'mxgraph.ios.iButtonBack',
+		SHAPE_IBUTTON_FORWARD : 'mxgraph.ios.iButtonFw',
+		SHAPE_IBUTTON_BAR : 'mxgraph.ios.iButtonBar',
+		SHAPE_ICALL_BUTTONS : 'mxgraph.ios.iCallButtons',
+		SHAPE_ICALL_DIALOG : 'mxgraph.ios.iCallDialog',
+		SHAPE_ICHECKBOX_GROUP : 'mxgraph.ios.iCheckboxGroup',
+		SHAPE_ICHECK_ICON : 'mxgraph.ios.iCheckIcon',
+		SHAPE_ICLOUD_PROGRESS_BAR : 'mxgraph.ios.iCloudProgressBar',
+		SHAPE_ICOMBO_BOX : 'mxgraph.ios.iComboBox',
+		SHAPE_ICOPY : 'mxgraph.ios.iCopy',
+		SHAPE_ICOPY_AREA : 'mxgraph.ios.iCopyArea',
+		SHAPE_IICON_GRID : 'mxgraph.ios.iIconGrid',
+		SHAPE_IDELETE_APP : 'mxgraph.ios.iDeleteApp',
+		SHAPE_IDELETE_ICON : 'mxgraph.ios.iDeleteIcon',
+		SHAPE_IDOWNLOAD_BAR : 'mxgraph.ios.iDownloadBar',
+		SHAPE_IDIALOG_BOX : 'mxgraph.ios.iDialogBox',
+		SHAPE_IDIRECTION : 'mxgraph.ios.iDir',
+		SHAPE_IHOME_PAGE_CONTROL : 'mxgraph.ios.iHomePageControl',
+		SHAPE_IKEYB_LETTERS : 'mxgraph.ios.iKeybLett',
+		SHAPE_IKEYB_NUMBERS : 'mxgraph.ios.iKeybNumb',
+		SHAPE_IKEYB_SYMBOLS : 'mxgraph.ios.iKeybSymb',
+		SHAPE_ILOCATION_BAR : 'mxgraph.ios.iLocBar',
+		SHAPE_ILOCK_BUTTON : 'mxgraph.ios.iLockButton',
+		SHAPE_IHOR_BUTTON_BAR : 'mxgraph.ios.iHorButtonBar',
+		SHAPE_IINFO_ICON : 'mxgraph.ios.iInfoIcon',
+		SHAPE_ION_OFF_BUTTON : 'mxgraph.ios.iOnOffButton',
+		SHAPE_IOPTION : 'mxgraph.ios.iOption',
+		SHAPE_IPAGE_CONTROL : 'mxgraph.ios.iPageControl',
+		SHAPE_IPAD : 'mxgraph.ios.iPad',
+		SHAPE_IPHONE : 'mxgraph.ios.iPhone',
+		SHAPE_IPIN : 'mxgraph.ios.iPin',
+		SHAPE_IPREV_NEXT : 'mxgraph.ios.iPrevNext',
+		SHAPE_IPROGRESS_BAR : 'mxgraph.ios.iProgressBar',
+		SHAPE_IRADIO_GROUP : 'mxgraph.ios.iRadioGroup',
+		SHAPE_ISLIDER : 'mxgraph.ios.iSlider',
+		SHAPE_ISORT_FIND_ICON : 'mxgraph.ios.iSortFindIcon',
+		SHAPE_ITEXT_INPUT : 'mxgraph.ios.iTextInput',
+		SHAPE_ITOP_BAR : 'mxgraph.ios.iTopBar',
+		SHAPE_ITOP_BAR_LOCKED : 'mxgraph.ios.iTopBarLocked',
+		SHAPE_IURL_BAR : 'mxgraph.ios.iURLBar',
+		SHAPE_IVIDEO_CONTROLS : 'mxgraph.ios.iVideoControls',
+		SHAPE_ISCREEN_NAME_BAR: 'mxgraph.ios.iScreenNameBar',
+			
+		STYLE_FILLCOLOR2 : 'fillColor2',
+		STYLE_FILLCOLOR3 : 'fillColor3',
+		STYLE_TEXTCOLOR : 'textColor',
+		STYLE_TEXTCOLOR2 : 'textColor2',
+		STYLE_STROKECOLOR2 : 'strokeColor2',
+		STYLE_STROKECOLOR3 : 'strokeColor3'
+};
+
 /**
  * Extends mxShape.
  */
@@ -31,24 +116,23 @@ mxUtils.extend(mxShapeMockupiPhone, mxShape);
 mxShapeMockupiPhone.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	c.translate(x, y);
-	this.background(c, x, y, w, h);
+	var rSize = 25;
+	this.background(c, x, y, w, h, rSize);
 	c.setShadow(false);
-	this.foreground(c, x, y, w, h);
+	this.foreground(c, x, y, w, h, rSize);
 };
 
-mxShapeMockupiPhone.prototype.background = function(c, x, y, w, h)
+mxShapeMockupiPhone.prototype.background = function(c, x, y, w, h, rSize)
 {
-	var rSize = 50;
 	c.setFillColor('#000000');
 	c.setStrokeColor('#000000');
 	c.roundrect(0, 0, w, h, rSize, rSize);
 	c.fillAndStroke();
 };
 
-mxShapeMockupiPhone.prototype.foreground = function(c, x, y, w, h)
+mxShapeMockupiPhone.prototype.foreground = function(c, x, y, w, h, rSize)
 {
-	var rSize = 50;
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 
 	c.begin();
 	c.setGradient('#808080', '#000000', w * 0.325, 0, w * 0.675, h * 0.5, mxConstants.DIRECTION_SOUTH, 1, 1);
@@ -64,7 +148,7 @@ mxShapeMockupiPhone.prototype.foreground = function(c, x, y, w, h)
 	var fillColor = mxUtils.getValue(this.style, mxConstants.STYLE_FILLCOLOR, '');
 	var bgStyle = mxUtils.getValue(this.style, mxMockupC.BG_STYLE, mxMockupC.BG_FLAT_GREEN);
 
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	if (bgStyle === mxMockupC.BG_FLAT_WHITE)
 	{
 		c.setFillColor('#ffffff');
@@ -107,14 +191,14 @@ mxShapeMockupiPhone.prototype.foreground = function(c, x, y, w, h)
 		var strokeColor2 = '#657E8F';
 
 		c.setStrokeColor(strokeColor2);
-		var i = 7;
+		var i = 5;
 		c.begin();
 
 		while (i < w)
 		{
 			c.moveTo(i, 0);
 			c.lineTo(i, h);
-			i = i + 7;
+			i = i + 5;
 		}
 
 		c.stroke();
@@ -494,18 +578,18 @@ mxShapeMockupiPhone.prototype.foreground = function(c, x, y, w, h)
 		c.translate( - w * 0.0625, - h * 0.15);
 	}
 
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	c.setStrokeColor('#18211b');
 	c.rect(w * 0.0625, h * 0.15, w * 0.875, h * 0.7);
 	c.stroke();
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setAlpha(0.8);
 	c.setStrokeColor('#dddddd');
 	c.roundrect(0, 0, w, h, rSize, rSize);
 	c.stroke();
 
-	rSize = 45;
+	rSize = 22.5;
 	c.begin();
 	c.setStrokeColor('#666666');
 	c.roundrect(5, 5, w - 10, h - 10, rSize, rSize);
@@ -513,16 +597,16 @@ mxShapeMockupiPhone.prototype.foreground = function(c, x, y, w, h)
 
 	c.setAlpha(1);
 	c.ellipse(w * 0.4875, h * 0.04125, w * 0.025, h * 0.0125);
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.setStrokeColor('#000000');
 	c.setFillColor('#000099');
 	c.fillAndStroke();
 
 	c.begin();
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setFillColor('#444444');
 	c.setStrokeColor('#333333');
-	rSize = 8;
+	rSize = 4;
 
 	c.roundrect(w * 0.375, h * 0.075, w * 0.25, h * 0.01875, w * 0.02, h * 0.01);
 	c.fillAndStroke();
@@ -546,9 +630,9 @@ mxShapeMockupiPhone.prototype.foreground = function(c, x, y, w, h)
 
 	c.begin();
 	c.setAlpha(0.7);
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor('#dddddd');
-	rSize = 8;
+	rSize = 4;
 	c.roundrect(w * 0.4575, h * 0.905, w * 0.0875, h * 0.04375, h * 0.00625, h * 0.00625);
 	c.stroke();
 };
@@ -630,7 +714,7 @@ mxShapeMockupiBgStriped.prototype.paintVertexShape = function(c, x, y, w, h)
 
 mxShapeMockupiBgStriped.prototype.background = function(c, x, y, w, h)
 {
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	c.begin();
 	c.rect(0, 0, w, h);
 	c.fillAndStroke();
@@ -642,14 +726,14 @@ mxShapeMockupiBgStriped.prototype.foreground = function(c, x, y, w, h)
 	var strokeColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_STROKECOLOR2, '');
 
 	c.setStrokeColor(strokeColor2);
-	var i = 7;
+	var i = 5;
 	c.begin();
 
 	while (i < w)
 	{
 		c.moveTo(i, 0);
 		c.lineTo(i, h);
-		i = i + 7;
+		i = i + 5;
 	}
 
 	c.stroke();
@@ -710,7 +794,7 @@ mxShapeMockupiBgMap.prototype.foreground = function(c, x, y, w, h)
 
 	c.setFillColor(fillColor2);
 	c.setStrokeColor(strokeColor2);
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 
 	c.begin();
 	c.moveTo(0, 0);
@@ -1051,7 +1135,7 @@ mxShapeMockupiBgMap.prototype.foreground = function(c, x, y, w, h)
 	c.close();
 	c.fillAndStroke();
 
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	c.setStrokeColor(strokeColor);
 	c.begin();
 	c.rect(0, 0, w, h);
@@ -1097,8 +1181,8 @@ mxShapeMockupiButtonBar.prototype.paintVertexShape = function(c, x, y, w, h)
 	var buttonNum = textStrings.length;
 	var maxButtonWidth = 0;
 	var selectedButton = -1;
-	var rSize = 5; //rounding size
-	var labelOffset = 5;
+	var rSize = 2.5; //rounding size
+	var labelOffset = 2.5;
 
 	for (var i = 0; i < buttonNum; i++)
 	{
@@ -1152,7 +1236,7 @@ mxShapeMockupiButtonBar.prototype.paintVertexShape = function(c, x, y, w, h)
 mxShapeMockupiButtonBar.prototype.background = function(c, w, h, rSize, buttonNum, labelOffset, minH, frameColor, separatorColor, bgColor, selectedButton, minButtonHeight)
 {
 	c.begin();
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 
 	//draw the frame
 	c.setStrokeColor(frameColor);
@@ -1262,7 +1346,7 @@ mxShapeMockupiButtonBar.prototype.buttonText = function(c, w, h, textString, fon
 	}
 
 	c.setFontSize(fontSize);
-	c.text(20, h, 0, 0, textString, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(10, h, 0, 0, textString, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
 	var mSize = fontSize * 0.5;
 	c.setStrokeWidth(fontSize * 0.3);
@@ -1304,7 +1388,6 @@ mxUtils.extend(mxShapeMockupiAppBar, mxShape);
 mxShapeMockupiAppBar.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	c.translate(x, y);
-//	c.setStrokeColor('none');
 	this.background(c, x, y, w, h);
 	c.setShadow(false);
 	this.foreground(c, x, y, w, h);
@@ -1320,104 +1403,104 @@ mxShapeMockupiAppBar.prototype.background = function(c, x, y, w, h)
 mxShapeMockupiAppBar.prototype.foreground = function(c, x, y, w, h)
 {
 	c.setFillColor('#0099ff');
-	c.rect(10, 18, 3, 5);
+	c.rect(5, h * 0.5 + 1.75, 1.5, 2.5);
 	c.fill();
 
-	c.rect(14, 16, 3, 7);
+	c.rect(7, h * 0.5 + 0.75, 1.5, 3.5);
 	c.fill();
 
-	c.rect(18, 14, 3, 9);
+	c.rect(9, h * 0.5 - 0.25, 1.5, 4.5);
 	c.fill();
 
-	c.rect(22, 12, 3, 11);
+	c.rect(11, h * 0.5 - 1.25, 1.5, 5.5);
 	c.fill();
 
-	c.rect(26, 10, 3, 13);
+	c.rect(13, h * 0.5 - 2.25, 1.5, 6.5);
 	c.fill();
 
-	c.rect(30, 8, 3, 15);
+	c.rect(15, h * 0.5 - 3.25, 1.5, 7.5);
 	c.fill();
 
-	c.setFontSize(15);
-	c.text(36, h * 0.5, 0, 0, 'CARRIER', mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.setFontSize(7.5);
+	c.text(18, h * 0.5, 0, 0, 'CARRIER', mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.text(w * 0.5, h * 0.5, 0, 0, '11:15AM', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
 	c.setFillColor('#999999');
-	c.ellipse(w - 113, h * 0.5 - 8, 16, 16);
+	c.ellipse(w - 56.5, h * 0.5 - 4, 8, 8);
 	c.fill();
 
 	c.setStrokeColor('#cccccc');
 	c.begin();
-	c.moveTo(w - 105, h * 0.5 - 6);
-	c.lineTo(w - 105, h * 0.5);
-	c.lineTo(w - 109, h * 0.5);
+	c.moveTo(w - 52.5, h * 0.5 - 3);
+	c.lineTo(w - 52.5, h * 0.5);
+	c.lineTo(w - 54.5, h * 0.5);
 	c.stroke();
 
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.setStrokeColor('#333333');
 	c.setFillColor('#990000');
 	c.begin();
-	c.moveTo(w - 91, h * 0.5);
-	c.lineTo(w - 75, h * 0.5 - 10);
-	c.lineTo(w - 83, h * 0.5 + 8);
-	c.lineTo(w - 84, h * 0.5 + 1);
+	c.moveTo(w - 45.5, h * 0.5);
+	c.lineTo(w - 37.5, h * 0.5 - 5);
+	c.lineTo(w - 41.5, h * 0.5 + 4);
+	c.lineTo(w - 42, h * 0.5 + 0.5);
 	c.close();
 	c.fillAndStroke();
 
 	c.setFillColor('#999999');
 	c.setStrokeColor('#999999');
 	c.begin();
-	c.moveTo(w - 57, h * 0.5 + 7);
-	c.arcTo(7, 7, 0, 1, 1, w - 53, h * 0.5 + 2);
+	c.moveTo(w - 28.5, h * 0.5 + 3.5);
+	c.arcTo(3.5, 3.5, 0, 1, 1, w - 26.5, h * 0.5 + 1);
 	c.stroke();
 
 	c.begin();
-	c.moveTo(w - 54.5, h * 0.5 + 0.5);
-	c.lineTo(w - 51.5, h * 0.5 + 0.5);
-	c.lineTo(w - 53, h * 0.5 + 3);
+	c.moveTo(w - 27.25, h * 0.5 + 0.25);
+	c.lineTo(w - 25.75, h * 0.5 + 0.25);
+	c.lineTo(w - 26.5, h * 0.5 + 1.5);
 	c.close();
 	c.fillAndStroke();
 
 	c.begin();
-	c.moveTo(w - 62, h * 0.5 - 1);
-	c.arcTo(2, 3, 0, 0, 1, w - 58, h * 0.5 - 1);
+	c.moveTo(w - 31, h * 0.5 - 0.5);
+	c.arcTo(1, 1.5, 0, 0, 1, w - 29, h * 0.5 - 0.5);
 	c.stroke();
 
-	c.rect(w - 63, h * 0.5 - 1, 6, 4);
+	c.rect(w - 31.5, h * 0.5 - 0.5, 3, 2);
 	c.fillAndStroke();
 
-	c.setGradient('#eeeeee', '#444444', w - 40, h * 0.5 - 6, 33, 12, mxConstants.DIRECTION_NORTH, 1, 1);
+	c.setGradient('#eeeeee', '#444444', w - 20, h * 0.5 - 3, 16.5, 6, mxConstants.DIRECTION_NORTH, 1, 1);
 	c.begin();
-	c.moveTo(w - 40, h * 0.5 - 6);
-	c.lineTo(w - 10, h * 0.5 - 6);
-	c.lineTo(w - 10, h * 0.5 - 2);
-	c.lineTo(w - 7, h * 0.5 - 2);
-	c.lineTo(w - 7, h * 0.5 + 2);
-	c.lineTo(w - 10, h * 0.5 + 2);
-	c.lineTo(w - 10, h * 0.5 + 6);
-	c.lineTo(w - 40, h * 0.5 + 6);
+	c.moveTo(w - 20, h * 0.5 - 3);
+	c.lineTo(w - 5, h * 0.5 - 3);
+	c.lineTo(w - 5, h * 0.5 - 1);
+	c.lineTo(w - 3.5, h * 0.5 - 1);
+	c.lineTo(w - 3.5, h * 0.5 + 1);
+	c.lineTo(w - 5, h * 0.5 + 1);
+	c.lineTo(w - 5, h * 0.5 + 3);
+	c.lineTo(w - 20, h * 0.5 + 3);
 	c.close();
 	c.fill();
 
-	c.setGradient('#E2FFEB', '#008215', w - 40, h * 0.5 - 6, 20, 12, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.setGradient('#E2FFEB', '#008215', w - 20, h * 0.5 - 3, 10, 6, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.begin();
-	c.moveTo(w - 40, h * 0.5 - 6);
-	c.lineTo(w - 20, h * 0.5 - 6);
-	c.lineTo(w - 20, h * 0.5 + 6);
-	c.lineTo(w - 40, h * 0.5 + 6);
+	c.moveTo(w - 20, h * 0.5 - 3);
+	c.lineTo(w - 10, h * 0.5 - 3);
+	c.lineTo(w - 10, h * 0.5 + 3);
+	c.lineTo(w - 20, h * 0.5 + 3);
 	c.close();
 	c.fill();
 
 	c.setStrokeColor('#666666');
 	c.begin();
-	c.moveTo(w - 40, h * 0.5 - 6);
-	c.lineTo(w - 10, h * 0.5 - 6);
-	c.lineTo(w - 10, h * 0.5 - 2);
-	c.lineTo(w - 7, h * 0.5 - 2);
-	c.lineTo(w - 7, h * 0.5 + 2);
-	c.lineTo(w - 10, h * 0.5 + 2);
-	c.lineTo(w - 10, h * 0.5 + 6);
-	c.lineTo(w - 40, h * 0.5 + 6);
+	c.moveTo(w - 20, h * 0.5 - 3);
+	c.lineTo(w - 5, h * 0.5 - 3);
+	c.lineTo(w - 5, h * 0.5 - 1);
+	c.lineTo(w - 3.5, h * 0.5 - 1);
+	c.lineTo(w - 3.5, h * 0.5 + 1);
+	c.lineTo(w - 5, h * 0.5 + 1);
+	c.lineTo(w - 5, h * 0.5 + 3);
+	c.lineTo(w - 20, h * 0.5 + 3);
 	c.close();
 	c.stroke();
 
@@ -1453,7 +1536,6 @@ mxUtils.extend(mxShapeMockupiTopBar, mxShape);
 mxShapeMockupiTopBar.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	c.translate(x, y);
-//	c.setStrokeColor('none');
 	this.background(c, x, y, w, h);
 	c.setShadow(false);
 	this.foreground(c, x, y, w, h);
@@ -1472,46 +1554,46 @@ mxShapeMockupiTopBar.prototype.foreground = function(c, x, y, w, h)
 	c.setFillColor('#cccccc');
 	c.setStrokeColor('#cccccc');
 	c.setFontColor('#cccccc');
-	c.setFontSize(15);
+	c.setFontSize(7.5);
 
-	c.rect(10, 18, 3, 5);
+	c.rect(5, h * 0.5 + 1.75, 1.5, 2.5);
 	c.fill();
 
-	c.rect(14, 16, 3, 7);
+	c.rect(7, h * 0.5 + 0.75, 1.5, 3.5);
 	c.fill();
 
-	c.rect(18, 14, 3, 9);
+	c.rect(9, h * 0.5 - 0.25, 1.5, 4.5);
 	c.fill();
 
-	c.rect(22, 12, 3, 11);
+	c.rect(11, h * 0.5 - 1.25, 1.5, 5.5);
 	c.fill();
 
-	c.rect(26, 10, 3, 13);
+	c.rect(13, h * 0.5 - 2.25, 1.5, 6.5);
 	c.fill();
 
-	c.rect(30, 8, 3, 15);
+	c.rect(15, h * 0.5 - 3.25, 1.5, 7.5);
 	c.fill();
 
-	c.text(36, h * 0.5, 0, 0, 'CARRIER', mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(18, h * 0.5, 0, 0, 'CARRIER', mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.text(w * 0.5, h * 0.5, 0, 0, '11:15AM', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
 	c.begin();
-	c.moveTo(w - 38, h * 0.5 - 4);
-	c.lineTo(w - 20, h * 0.5 - 4);
-	c.lineTo(w - 20, h * 0.5 + 4);
-	c.lineTo(w - 38, h * 0.5 + 4);
+	c.moveTo(w - 19, h * 0.5 - 2);
+	c.lineTo(w - 10, h * 0.5 - 2);
+	c.lineTo(w - 10, h * 0.5 + 2);
+	c.lineTo(w - 19, h * 0.5 + 2);
 	c.close();
 	c.fill();
 
 	c.begin();
-	c.moveTo(w - 40, h * 0.5 - 6);
-	c.lineTo(w - 10, h * 0.5 - 6);
-	c.lineTo(w - 10, h * 0.5 - 2);
-	c.lineTo(w - 7, h * 0.5 - 2);
-	c.lineTo(w - 7, h * 0.5 + 2);
-	c.lineTo(w - 10, h * 0.5 + 2);
-	c.lineTo(w - 10, h * 0.5 + 6);
-	c.lineTo(w - 40, h * 0.5 + 6);
+	c.moveTo(w - 20, h * 0.5 - 3);
+	c.lineTo(w - 5, h * 0.5 - 3);
+	c.lineTo(w - 5, h * 0.5 - 1);
+	c.lineTo(w - 3.5, h * 0.5 - 1);
+	c.lineTo(w - 3.5, h * 0.5 + 1);
+	c.lineTo(w - 5, h * 0.5 + 1);
+	c.lineTo(w - 5, h * 0.5 + 3);
+	c.lineTo(w - 20, h * 0.5 + 3);
 	c.close();
 	c.stroke();
 };
@@ -1546,7 +1628,6 @@ mxUtils.extend(mxShapeMockupiTopBarLocked, mxShape);
 mxShapeMockupiTopBarLocked.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	c.translate(x, y);
-//	c.setStrokeColor('none');
 	this.background(c, x, y, w, h);
 	c.setShadow(false);
 	this.foreground(c, x, y, w, h);
@@ -1564,54 +1645,54 @@ mxShapeMockupiTopBarLocked.prototype.foreground = function(c, x, y, w, h)
 	c.setFillColor('#cccccc');
 	c.setStrokeColor('#cccccc');
 	c.setFontColor('#cccccc');
-	c.setFontSize(15);
+	c.setFontSize(7.5);
 
-	c.rect(10, 18, 3, 5);
+	c.rect(5, h * 0.5 + 1.75, 1.5, 2.5);
 	c.fill();
 
-	c.rect(14, 16, 3, 7);
+	c.rect(7, h * 0.5 + 0.75, 1.5, 3.5);
 	c.fill();
 
-	c.rect(18, 14, 3, 9);
+	c.rect(9, h * 0.5 - 0.25, 1.5, 4.5);
 	c.fill();
 
-	c.rect(22, 12, 3, 11);
+	c.rect(11, h * 0.5 - 1.25, 1.5, 5.5);
 	c.fill();
 
-	c.rect(26, 10, 3, 13);
+	c.rect(13, h * 0.5 - 2.25, 1.5, 6.5);
 	c.fill();
 
-	c.rect(30, 8, 3, 15);
+	c.rect(15, h * 0.5 - 3.25, 1.5, 7.5);
 	c.fill();
 
-	c.text(36, h * 0.5, 0, 0, 'CARRIER', mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(18, h * 0.5, 0, 0, 'CARRIER', mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
 	c.begin();
-	c.moveTo(w * 0.5 - 4, h * 0.5 - 2);
-	c.arcTo(4, 6, 0, 0, 1, w * 0.5 + 4, h * 0.5 - 2);
+	c.moveTo(w * 0.5 - 2, h * 0.5 - 1);
+	c.arcTo(2, 3, 0, 0, 1, w * 0.5 + 2, h * 0.5 - 1);
 	c.stroke();
 
-	c.rect(w * 0.5 - 6, h * 0.5 - 2, 12, 8);
+	c.rect(w * 0.5 - 3, h * 0.5 - 1, 6, 4);
 	c.fillAndStroke();
 
 
 	c.begin();
-	c.moveTo(w - 38, h * 0.5 - 4);
-	c.lineTo(w - 20, h * 0.5 - 4);
-	c.lineTo(w - 20, h * 0.5 + 4);
-	c.lineTo(w - 38, h * 0.5 + 4);
+	c.moveTo(w - 19, h * 0.5 - 2);
+	c.lineTo(w - 10, h * 0.5 - 2);
+	c.lineTo(w - 10, h * 0.5 + 2);
+	c.lineTo(w - 19, h * 0.5 + 2);
 	c.close();
 	c.fill();
 
 	c.begin();
-	c.moveTo(w - 40, h * 0.5 - 6);
-	c.lineTo(w - 10, h * 0.5 - 6);
-	c.lineTo(w - 10, h * 0.5 - 2);
-	c.lineTo(w - 7, h * 0.5 - 2);
-	c.lineTo(w - 7, h * 0.5 + 2);
-	c.lineTo(w - 10, h * 0.5 + 2);
-	c.lineTo(w - 10, h * 0.5 + 6);
-	c.lineTo(w - 40, h * 0.5 + 6);
+	c.moveTo(w - 20, h * 0.5 - 3);
+	c.lineTo(w - 5, h * 0.5 - 3);
+	c.lineTo(w - 5, h * 0.5 - 1);
+	c.lineTo(w - 3.5, h * 0.5 - 1);
+	c.lineTo(w - 3.5, h * 0.5 + 1);
+	c.lineTo(w - 5, h * 0.5 + 1);
+	c.lineTo(w - 5, h * 0.5 + 3);
+	c.lineTo(w - 20, h * 0.5 + 3);
 	c.close();
 	c.stroke();
 
@@ -1648,7 +1729,7 @@ mxShapeMockupiButton.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	var mainText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, 'Main Text');
 	var fontColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR2, '#666666').toString();
-	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '17').toString();
+	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '8.5').toString();
 	c.translate(x, y);
 	this.background(c, x, y, w, h);
 	c.setShadow(false);
@@ -1661,7 +1742,7 @@ mxShapeMockupiButton.prototype.background = function(c, x, y, w, h)
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	c.roundrect(0, 0, w, h, 5, 5);
+	c.roundrect(0, 0, w, h, 2.5, 2.5);
 	c.fill();
 };
 
@@ -1717,14 +1798,14 @@ mxShapeMockupiButtonBack.prototype.background = function(c, x, y, w, h)
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	rSize = 5;
+	rSize = 2.5;
 	c.begin();
 	c.moveTo(w, rSize);
 	c.arcTo(rSize, rSize, 0, 0, 0, w - rSize, 0);
-	c.lineTo(20, 0);
-	c.lineTo(1.74, h * 0.5 - 1.5);
-	c.arcTo(rSize, rSize, 0, 0, 0, 1.74, h * 0.5 + 1.5);
-	c.lineTo(20, h);
+	c.lineTo(10, 0);
+	c.lineTo(0.87, h * 0.5 - 0.75);
+	c.arcTo(rSize, rSize, 0, 0, 0, 0.87, h * 0.5 + 0.75);
+	c.lineTo(10, h);
 	c.lineTo(w - rSize, h);
 	c.arcTo(rSize, rSize, 0, 0, 0, w, h - rSize);
 	c.close();	
@@ -1736,7 +1817,7 @@ mxShapeMockupiButtonBack.prototype.mainText = function(c, x, y, w, h, text, font
 	c.begin();
 	c.setFontSize(fontSize);
 	c.setFontColor(fontColor);
-	c.text(w * 0.5 + 5, h * 0.5, 0, 0, text, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(w * 0.5 + 2.5, h * 0.5, 0, 0, text, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_IBUTTON_BACK] = mxShapeMockupiButtonBack;
@@ -1783,14 +1864,14 @@ mxShapeMockupiButtonForward.prototype.background = function(c, x, y, w, h)
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	rSize = 5;
+	rSize = 2.5;
 	c.begin();
 	c.moveTo(0, rSize);
 	c.arcTo(rSize, rSize, 0, 0, 1, rSize, 0);
-	c.lineTo(w - 20, 0);
-	c.lineTo(w - 1.74, h * 0.5 - 1.5);
-	c.arcTo(rSize, rSize, 0, 0, 1, w - 1.74, h * 0.5 + 1.5);
-	c.lineTo(w - 20, h);
+	c.lineTo(w - 10, 0);
+	c.lineTo(w - 0.87, h * 0.5 - 0.75);
+	c.arcTo(rSize, rSize, 0, 0, 1, w - 0.87, h * 0.5 + 0.75);
+	c.lineTo(w - 10, h);
 	c.lineTo(rSize, h);
 	c.arcTo(rSize, rSize, 0, 0, 1, 0, h - rSize);
 	c.close();	
@@ -1802,7 +1883,7 @@ mxShapeMockupiButtonForward.prototype.mainText = function(c, x, y, w, h, text, f
 	c.begin();
 	c.setFontSize(fontSize);
 	c.setFontColor(fontColor);
-	c.text(w * 0.5 - 5, h * 0.5, 0, 0, text, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(w * 0.5 - 2.5, h * 0.5, 0, 0, text, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_IBUTTON_FORWARD] = mxShapeMockupiButtonForward;
@@ -1907,7 +1988,7 @@ mxShapeMockupiTextInput.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	var mainText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, 'Main Text');
 	var fontColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR2, '#000000').toString();
-	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '12').toString();
+	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '8').toString();
 	c.translate(x, y);
 	this.background(c, x, y, w, h);
 	c.setShadow(false);
@@ -1916,7 +1997,7 @@ mxShapeMockupiTextInput.prototype.paintVertexShape = function(c, x, y, w, h)
 
 mxShapeMockupiTextInput.prototype.background = function(c, x, y, w, h)
 {
-	c.roundrect(0, 0, w, h, 5, 5);
+	c.roundrect(0, 0, w, h, 2.5, 2.5);
 	c.fillAndStroke();
 };
 
@@ -1925,7 +2006,7 @@ mxShapeMockupiTextInput.prototype.mainText = function(c, x, y, w, h, text, fontS
 	c.begin();
 	c.setFontSize(fontSize);
 	c.setFontColor(fontColor);
-	c.text(4, h * 0.5, 0, 0, text, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(2, h * 0.5, 0, 0, text, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_ITEXT_INPUT] = mxShapeMockupiTextInput;
@@ -1960,14 +2041,14 @@ mxShapeMockupiRadioGroup.prototype.paintVertexShape = function(c, x, y, w, h)
 	c.translate(x, y);
 
 	var fontColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR2, '#666666').toString();
-	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '12').toString();
+	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '8').toString();
 	var optionText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, 'Option 1').toString().split(',');
 	var optionNum = optionText.length;
-	var buttonSize = 10;
+	var buttonSize = 5;
 	var lineH = Math.max(fontSize * 1.5, buttonSize);
 	var maxTextWidth = 0;
 	var selected = -1;
-	var labelOffset = 5;
+	var labelOffset = 2.5;
 	var minH = optionNum * lineH;
 	var trueH = Math.max(h, minH);
 
@@ -1994,7 +2075,7 @@ mxShapeMockupiRadioGroup.prototype.paintVertexShape = function(c, x, y, w, h)
 	var trueW = Math.max(w, minW);
 
 	//draw the background
-	c.roundrect(0, 0, trueW, trueH, 5, 5);
+	c.roundrect(0, 0, trueW, trueH, 2.5, 2.5);
 	c.fillAndStroke();
 	c.setShadow(false);
 
@@ -2071,14 +2152,14 @@ mxShapeMockupiCheckboxGroup.prototype.paintVertexShape = function(c, x, y, w, h)
 	c.translate(x, y);
 
 	var fontColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR2, '#666666').toString();
-	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '12').toString();
+	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '8').toString();
 	var optionText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, 'Option 1').toString().split(',');
 	var optionNum = optionText.length;
-	var buttonSize = 10;
+	var buttonSize = 5;
 	var lineH = Math.max(fontSize * 1.5, buttonSize);
 	var maxTextWidth = 0;
 	var selected = -1;
-	var labelOffset = 5;
+	var labelOffset = 2.5;
 	var minH = optionNum * lineH;
 	var trueH = Math.max(h, minH);
 
@@ -2105,7 +2186,7 @@ mxShapeMockupiCheckboxGroup.prototype.paintVertexShape = function(c, x, y, w, h)
 	var trueW = Math.max(w, minW);
 
 	//draw the background
-	c.roundrect(0, 0, trueW, trueH, 5, 5);
+	c.roundrect(0, 0, trueW, trueH, 2.5, 2.5);
 	c.fillAndStroke();
 	c.setShadow(false);
 
@@ -2185,7 +2266,7 @@ mxShapeMockupiComboBox.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	var mainText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, 'Main Text');
 	var fontColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR2, '#666666').toString();
-	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '17').toString();
+	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '8.5').toString();
 	c.translate(x, y);
 	this.background(c, x, y, w, h);
 	c.setShadow(false);
@@ -2196,7 +2277,7 @@ mxShapeMockupiComboBox.prototype.paintVertexShape = function(c, x, y, w, h)
 mxShapeMockupiComboBox.prototype.background = function(c, x, y, w, h)
 {
 	c.setFillColor('#ffffff');
-	c.roundrect(0, 0, w, h, 5, 5);
+	c.roundrect(0, 0, w, h, 2.5, 2.5);
 	c.fillAndStroke();
 };
 
@@ -2206,20 +2287,20 @@ mxShapeMockupiComboBox.prototype.foreground = function(c, x, y, w, h)
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, w - 30, 0, 30, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.begin();
-	c.moveTo(w - 30, 0);
-	c.lineTo(w - 5, 0);
-	c.arcTo(5, 5, 0, 0, 1, w, 5);
-	c.lineTo(w, h - 5);
-	c.arcTo(5, 5, 0, 0, 1, w - 5, h);
-	c.lineTo(w - 30, h);
+	c.moveTo(w - 15, 0);
+	c.lineTo(w - 2.5, 0);
+	c.arcTo(2.5, 2.5, 0, 0, 1, w, 2.5);
+	c.lineTo(w, h - 2.5);
+	c.arcTo(2.5, 2.5, 0, 0, 1, w - 2.5, h);
+	c.lineTo(w - 15, h);
 	c.close();
 	c.fillAndStroke();
 
 	c.setFillColor('#ffffff');
 	c.begin();
-	c.moveTo(w - 22, 10);
-	c.lineTo(w - 15, 20);
-	c.lineTo(w - 8, 10);
+	c.moveTo(w - 11, 5);
+	c.lineTo(w - 7.5, 10);
+	c.lineTo(w - 4, 5);
 	c.fill();
 };
 
@@ -2228,13 +2309,13 @@ mxShapeMockupiComboBox.prototype.mainText = function(c, x, y, w, h, text, fontSi
 	c.begin();
 	c.setFontSize(fontSize);
 	c.setFontColor(fontColor);
-	c.text(5, h * 0.5, 0, 0, text, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(2.5, h * 0.5, 0, 0, text, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_ICOMBO_BOX] = mxShapeMockupiComboBox;
 
 //**********************************************************************************************************************************************************
-//Button
+//On-Off Button
 //**********************************************************************************************************************************************************
 /**
  * Extends mxShape.
@@ -2304,18 +2385,15 @@ mxShapeMockupiOnOffButton.prototype.foreground = function(c, x, y, w, h, state)
 
 mxShapeMockupiOnOffButton.prototype.mainText = function(c, x, y, w, h, state)
 {
+	c.setFontColor('#ffffff');
+	c.setFontSize(8.5);
+
 	if(state === mxMockupC.STATE_ON)
 	{
-		c.setFontColor('#ffffff');
-		c.setFontSize(17);
-		c.begin();
 		c.text(w * 0.5 - h * 0.4, h * 0.5, 0, 0, 'ON', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	}
 	else if (state === mxMockupC.STATE_OFF)
 	{
-		c.setFontColor('#ffffff');
-		c.setFontSize(17);
-		c.begin();
 		c.text(w * 0.5 + h * 0.4, h * 0.5, 0, 0, 'OFF', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	}
 };
@@ -2349,10 +2427,10 @@ mxUtils.extend(mxShapeMockupiAlertBox, mxShape);
  */
 mxShapeMockupiAlertBox.prototype.paintVertexShape = function(c, x, y, w, h)
 {
-	w = Math.max(w, 30);
-	h = Math.max(h, 30);
+	w = Math.max(w, 15);
+	h = Math.max(h, 15);
 	c.translate(x, y);
-	rSize = 15;
+	rSize = 7.5;
 	this.background(c, x, y, w, h, rSize);
 	c.setShadow(false);
 	this.foreground(c, x, y, w, h, rSize);
@@ -2362,7 +2440,7 @@ mxShapeMockupiAlertBox.prototype.background = function(c, x, y, w, h, rSize)
 {
 	c.setGradient('#497198', '#193168', 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.setAlpha(0.8);
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	c.roundrect(0, 0, w, h, rSize, rSize);
 	c.fillAndStroke();
 };
@@ -2372,13 +2450,13 @@ mxShapeMockupiAlertBox.prototype.foreground = function(c, x, y, w, h, rSize)
 	var mainText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, 'Main Text').toString().split(',');
 
 	c.setStrokeColor('#497198');
-	c.setGradient('#497198', '#c5cee1', 0, 0, w, 45, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.setGradient('#497198', '#c5cee1', 0, 0, w, 22.5, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.setAlpha(0.5);
 	c.begin();
 	c.moveTo(w - rSize, 0);
 	c.arcTo(rSize, rSize, 0, 0, 1, w, rSize);
-	c.lineTo(w, 35);
-	c.arcTo(w * 1.67, h * 2.5, 0, 0, 1, 0, 35);
+	c.lineTo(w, 17.5);
+	c.arcTo(w * 1.67, h * 2.5, 0, 0, 1, 0, 17.5);
 	c.lineTo(0, rSize);
 	c.arcTo(rSize, rSize, 0, 0, 1, rSize, 0);
 	c.close();
@@ -2386,25 +2464,25 @@ mxShapeMockupiAlertBox.prototype.foreground = function(c, x, y, w, h, rSize)
 
 	c.setAlpha(0.8);
 	c.setStrokeColor('#ffffff');
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	c.roundrect(0, 0, w, h, rSize, rSize);
 	c.stroke();
 
-	c.setGradient('#497198', '#c5cee1', 10, h - 50, w - 20, 40, mxConstants.DIRECTION_SOUTH, 1, 1);
-	c.roundrect(10, h - 50, w - 20, 40, 5, 5);
+	c.setGradient('#497198', '#c5cee1', 5, h - 50, w - 20, 20, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.roundrect(5, h - 25, w - 10, 20, 2.5, 2.5);
 	c.fillAndStroke();
 
 	c.setAlpha(0.9);
-	c.setFontSize(19);
+	c.setFontSize(9.5);
 	c.setFontColor('#ffffff');
 	c.text(w * 0.5, h * 0.15, 0, 0, mainText[0], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
-	c.setFontSize(15);
+	c.setFontSize(8);
 	c.text(w * 0.5, h * 0.4, 0, 0, mainText[2], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.text(w * 0.5, h * 0.55, 0, 0, mainText[3], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
-	c.setFontSize(17);
-	c.text(w * 0.5, h - 30, 0, 0, mainText[1], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.setFontSize(8.5);
+	c.text(w * 0.5, h - 15, 0, 0, mainText[1], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_IALERT_BOX] = mxShapeMockupiAlertBox;
@@ -2436,10 +2514,10 @@ mxUtils.extend(mxShapeMockupiDialogBox, mxShape);
  */
 mxShapeMockupiDialogBox.prototype.paintVertexShape = function(c, x, y, w, h)
 {
-	w = Math.max(w, 30);
-	h = Math.max(h, 30);
+	w = Math.max(w, 15);
+	h = Math.max(h, 15);
 	c.translate(x, y);
-	rSize = 15;
+	rSize = 7.5;
 	this.background(c, x, y, w, h, rSize);
 	c.setShadow(false);
 	this.foreground(c, x, y, w, h, rSize);
@@ -2449,7 +2527,7 @@ mxShapeMockupiDialogBox.prototype.background = function(c, x, y, w, h, rSize)
 {
 	c.setGradient('#497198', '#193168', 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.setAlpha(0.8);
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	c.roundrect(0, 0, w, h, rSize, rSize);
 	c.fillAndStroke();
 };
@@ -2459,13 +2537,13 @@ mxShapeMockupiDialogBox.prototype.foreground = function(c, x, y, w, h, rSize)
 	var mainText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, 'Main Text').toString().split(',');
 
 	c.setStrokeColor('#497198');
-	c.setGradient('#497198', '#c5cee1', 0, 0, w, 45, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.setGradient('#497198', '#c5cee1', 0, 0, w, 22.5, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.setAlpha(0.5);
 	c.begin();
 	c.moveTo(w - rSize, 0);
 	c.arcTo(rSize, rSize, 0, 0, 1, w, rSize);
-	c.lineTo(w, 35);
-	c.arcTo(w * 1.67, h * 2.5, 0, 0, 1, 0, 35);
+	c.lineTo(w, 17.5);
+	c.arcTo(w * 1.67, h * 2.5, 0, 0, 1, 0, 17.5);
 	c.lineTo(0, rSize);
 	c.arcTo(rSize, rSize, 0, 0, 1, rSize, 0);
 	c.close();
@@ -2473,29 +2551,29 @@ mxShapeMockupiDialogBox.prototype.foreground = function(c, x, y, w, h, rSize)
 
 	c.setAlpha(0.8);
 	c.setStrokeColor('#ffffff');
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	c.roundrect(0, 0, w, h, rSize, rSize);
 	c.stroke();
 
-	c.setGradient('#497198', '#c5cee1', 10, h - 50, w * 0.5 - 20, 40, mxConstants.DIRECTION_SOUTH, 1, 1);
-	c.roundrect(10, h - 50, w * 0.5 - 20, 40, 5, 5);
+	c.setGradient('#497198', '#c5cee1', 5, h - 25, w * 0.5 - 10, 20, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.roundrect(5, h - 25, w * 0.5 - 10, 20, 2.5, 2.5);
 	c.fillAndStroke();
 
-	c.roundrect(w * 0.5 + 5, h - 50, w * 0.5 - 20, 40, 5, 5);
+	c.roundrect(w * 0.5 + 2.5, h - 25, w * 0.5 - 10, 20, 2.5, 2.5);
 	c.fillAndStroke();
 
 	c.setAlpha(0.9);
-	c.setFontSize(19);
+	c.setFontSize(9.5);
 	c.setFontColor('#ffffff');
 	c.text(w * 0.5, h * 0.15, 0, 0, mainText[0], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
-	c.setFontSize(15);
+	c.setFontSize(8);
 	c.text(w * 0.5, h * 0.4, 0, 0, mainText[3], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.text(w * 0.5, h * 0.55, 0, 0, mainText[4], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
-	c.setFontSize(17);
-	c.text(w * 0.25, h - 30, 0, 0, mainText[1], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
-	c.text(w * 0.75, h - 30, 0, 0, mainText[2], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.setFontSize(8.5);
+	c.text(w * 0.25, h - 15, 0, 0, mainText[1], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(w * 0.75, h - 15, 0, 0, mainText[2], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_IDIALOG_BOX] = mxShapeMockupiDialogBox;
@@ -2536,33 +2614,33 @@ mxShapeMockupiLockButton.prototype.paintVertexShape = function(c, x, y, w, h)
 	c.fill();
 
 	c.setAlpha(0.8);
-	c.setGradient('#18232D', '#1F2933', 20, 20, 308, 60, mxConstants.DIRECTION_NORTH, 1, 1);
-	c.roundrect(20, 20, 308, 60, 15, 15);
+	c.setGradient('#18232D', '#1F2933', 10, 10, 154, 30, mxConstants.DIRECTION_NORTH, 1, 1);
+	c.roundrect(10, h * 0.5 - 15, w - 20, 30, 7.5, 7.5);
 	c.fill();
 
 	c.setAlpha(1);
-	c.setGradient('#E9F3FD', '#ADB7C1', 25, 25, 80, 50, mxConstants.DIRECTION_SOUTH, 1, 1);
-	c.roundrect(25, 25, 80, 50, 10, 10);
+	c.setGradient('#E9F3FD', '#ADB7C1', 12.5, 12.5, 40, 25, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.roundrect(12.5, h * 0.5 - 12.5, 40, 25, 5, 5);
 	c.fill();
 
 	c.setAlpha(0.8);
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.setStrokeColor('#aabbbb');
-	c.setGradient('#AEB7C1', '#667079', 40, 35, 50, 30, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.setGradient('#AEB7C1', '#667079', 20, 17.5, 25, 15, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.begin();
-	c.moveTo(40, 43);
-	c.lineTo(70, 43);
-	c.lineTo(70, 35);
-	c.lineTo(90, 50);
-	c.lineTo(70, 65);
-	c.lineTo(70, 57);
-	c.lineTo(40, 57);
+	c.moveTo(20, h * 0.5 - 3.5);
+	c.lineTo(35, h * 0.5 - 3.5);
+	c.lineTo(35, h * 0.5 - 7.5);
+	c.lineTo(45, h * 0.5);
+	c.lineTo(35, h * 0.5 + 7.5);
+	c.lineTo(35, h * 0.5 + 3.5);
+	c.lineTo(20, h * 0.5 + 3.5);
 	c.close();
 	c.fillAndStroke();
 
-	c.setFontSize(25);
+	c.setFontSize(12.5);
 	c.setFontColor('#cccccc');
-	c.text(w / 2 + 41, h / 2, 0, 0, 'slide to unlock', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(w / 2 + 20.5, h / 2, 0, 0, 'slide to unlock', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_ILOCK_BUTTON] = mxShapeMockupiLockButton;
@@ -2608,15 +2686,15 @@ mxShapeMockupiArrowIcon.prototype.background = function(c, x, y, w, h, strokeCol
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor(strokeColor);
-	c.ellipse(0, 0, w, h, 5, 5);
+	c.ellipse(0, 0, w, h);
 	c.fillAndStroke();
 };
 
 mxShapeMockupiArrowIcon.prototype.foreground = function(c, x, y, w, h, strokeColor)
 {
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.begin();
 	c.moveTo(w * 0.4, h * 0.22);
 	c.lineTo(w * 0.65, h * 0.5);
@@ -2667,15 +2745,15 @@ mxShapeMockupiDeleteIcon.prototype.background = function(c, x, y, w, h, strokeCo
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor(strokeColor);
-	c.ellipse(0, 0, w, h, 5, 5);
+	c.ellipse(0, 0, w, h);
 	c.fillAndStroke();
 };
 
 mxShapeMockupiDeleteIcon.prototype.foreground = function(c, x, y, w, h, strokeColor)
 {
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.begin();
 	c.moveTo(w * 0.25, h * 0.5);
 	c.lineTo(w * 0.75, h * 0.5);
@@ -2726,14 +2804,14 @@ mxShapeMockupiAddIcon.prototype.paintVertexShape = function(c, x, y, w, h)
 
 mxShapeMockupiAddIcon.prototype.background = function(c, x, y, w, h, strokeColor)
 {
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.ellipse(0, 0, w, h);
 	c.fillAndStroke();
 };
 
 mxShapeMockupiAddIcon.prototype.foreground = function(c, x, y, w, h, strokeColor)
 {
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.begin();
 	c.moveTo(w * 0.25, h * 0.5);
 	c.lineTo(w * 0.75, h * 0.5);
@@ -2785,7 +2863,7 @@ mxShapeMockupiInfoIcon.prototype.background = function(c, x, y, w, h, strokeColo
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor(strokeColor);
 	c.ellipse(0, 0, w, h);
 	c.fillAndStroke();
@@ -2793,7 +2871,7 @@ mxShapeMockupiInfoIcon.prototype.background = function(c, x, y, w, h, strokeColo
 
 mxShapeMockupiInfoIcon.prototype.foreground = function(c, x, y, w, h, strokeColor)
 {
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.begin();
 	c.setFillColor('#ffffff');
 	c.moveTo(w * 0.47, h * 0.334);
@@ -2864,7 +2942,7 @@ mxShapeMockupiSortFindIcon.prototype.background = function(c, x, y, w, h, stroke
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor(strokeColor);
 	c.roundrect(0, 0, w, h, w * 0.1, h * 0.1);
 	c.fillAndStroke();
@@ -2938,15 +3016,15 @@ mxShapeMockupiCheckIcon.prototype.background = function(c, x, y, w, h, strokeCol
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor(strokeColor);
-	c.ellipse(0, 0, w, h, 5, 5);
+	c.ellipse(0, 0, w, h);
 	c.fillAndStroke();
 };
 
 mxShapeMockupiCheckIcon.prototype.foreground = function(c, x, y, w, h, strokeColor)
 {
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.begin();
 	c.moveTo(w * 0.25, h * 0.5);
 	c.lineTo(w * 0.5, h * 0.65);
@@ -3002,7 +3080,7 @@ mxShapeMockupiKeybLetters.prototype.foreground = function(c, x, y, w, h, strokeC
 	c.setGradient('#EEF3F9', '#DBE2E9', w * 0.0086, h * 0.03, w * 0.0776, h * 0.19, mxConstants.DIRECTION_SOUTH, 1, 1);
 	rSizeX = w * 0.0144;
 	rSizeY = h * 0.025;
-	c.setFontSize(21);
+	c.setFontSize(10.5);
 	c.setFontColor('#000000');
 
 	c.roundrect(w * 0.0086, h * 0.03, w * 0.0776, h * 0.19, rSizeX, rSizeY);
@@ -3138,7 +3216,7 @@ mxShapeMockupiKeybLetters.prototype.foreground = function(c, x, y, w, h, strokeC
 	c.setLineJoin('round');
 	c.setStrokeColor('#ffffff');
 	c.setFillColor('#ffffff');
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.begin();
 	c.moveTo(w * 0.0402, h * 0.635);
 	c.lineTo(w * 0.0718, h * 0.58);
@@ -3216,7 +3294,7 @@ mxShapeMockupiKeybNumbers.prototype.foreground = function(c, x, y, w, h, strokeC
 	c.setGradient('#EEF3F9', '#DBE2E9', w * 0.0086, h * 0.03, w * 0.0776, h * 0.19, mxConstants.DIRECTION_SOUTH, 1, 1);
 	rSizeX = w * 0.0144;
 	rSizeY = h * 0.025;
-	c.setFontSize(21);
+	c.setFontSize(10.5);
 	c.setFontColor('#000000');
 
 	c.roundrect(w * 0.0086, h * 0.03, w * 0.0776, h * 0.19, rSizeX, rSizeY);
@@ -3348,7 +3426,7 @@ mxShapeMockupiKeybNumbers.prototype.foreground = function(c, x, y, w, h, strokeC
 	c.setLineJoin('round');
 	c.setStrokeColor('#ffffff');
 	c.setFillColor('#ffffff');
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.begin();
 	c.moveTo(w * 0.9109, h * 0.585);
 	c.lineTo(w * 0.9655, h * 0.585);
@@ -3415,7 +3493,7 @@ mxShapeMockupiKeybSymbols.prototype.foreground = function(c, x, y, w, h, strokeC
 	c.setGradient('#EEF3F9', '#DBE2E9', w * 0.0086, h * 0.03, w * 0.0776, h * 0.19, mxConstants.DIRECTION_SOUTH, 1, 1);
 	rSizeX = w * 0.0144;
 	rSizeY = h * 0.025;
-	c.setFontSize(21);
+	c.setFontSize(10.5);
 	c.setFontColor('#000000');
 
 	c.roundrect(w * 0.0086, h * 0.03, w * 0.0776, h * 0.19, rSizeX, rSizeY);
@@ -3547,7 +3625,7 @@ mxShapeMockupiKeybSymbols.prototype.foreground = function(c, x, y, w, h, strokeC
 	c.setLineJoin('round');
 	c.setStrokeColor('#ffffff');
 	c.setFillColor('#ffffff');
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.begin();
 	c.moveTo(w * 0.9109, h * 0.585);
 	c.lineTo(w * 0.9655, h * 0.585);
@@ -3609,15 +3687,15 @@ mxShapeMockupiDeleteApp.prototype.background = function(c, x, y, w, h, strokeCol
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '').toString();
 	c.setGradient(fillColor, fillColor2, 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor(strokeColor);
-	c.ellipse(0, 0, w, h, 5, 5);
+	c.ellipse(0, 0, w, h);
 	c.fillAndStroke();
 };
 
 mxShapeMockupiDeleteApp.prototype.foreground = function(c, x, y, w, h)
 {
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.begin();
 	c.moveTo(w * 0.3, h * 0.3);
 	c.lineTo(w * 0.7, h * 0.7);
@@ -3663,7 +3741,7 @@ mxShapeMockupiDirection.prototype.paintVertexShape = function(c, x, y, w, h)
 
 mxShapeMockupiDirection.prototype.background = function(c, x, y, w, h)
 {
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.setStrokeColor('#008cff');
 	c.ellipse(0, 0, w, h);
 	c.stroke();
@@ -3732,11 +3810,11 @@ mxShapeMockupiLocationBar.prototype.background = function(c, x, y, w, h)
 	barPos = Math.min(barPos, 100);
 	barPos = Math.max(barPos, 0);
 	var pointerPos = mxUtils.getValue(this.style, mxMockupC.POINTER_POS, mxMockupC.POINTER_BOTTOM);
-	var rSize = 5;
-	var deadzone = rSize + 15; // rounding + pointer width / 2 
+	var rSize = 2.5;
+	var deadzone = rSize + 7.5; // rounding + pointer width / 2 
 	var virRange = w - 2 * deadzone;
 	var truePos = deadzone + virRange * barPos / 100;
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.setStrokeColor('#000000');
 	c.setAlpha(0.7);
 	c.begin();
@@ -3748,24 +3826,24 @@ mxShapeMockupiLocationBar.prototype.background = function(c, x, y, w, h)
 		c.arcTo(rSize, rSize, 0, 0, 1, rSize, 0);
 		c.lineTo(w - rSize, 0);
 		c.arcTo(rSize, rSize, 0, 0, 1, w, rSize);
-		c.lineTo(w, h - rSize - 15);
-		c.arcTo(rSize, rSize, 0, 0, 1, w - rSize, h - 15);
-		c.lineTo(truePos + 15, h - 15);
+		c.lineTo(w, h - rSize - 7.5);
+		c.arcTo(rSize, rSize, 0, 0, 1, w - rSize, h - 7.5);
+		c.lineTo(truePos + 7.5, h - 7.5);
 		c.lineTo(truePos, h);
-		c.lineTo(truePos - 15, h - 15);
-		c.lineTo(rSize, h - 15);
-		c.arcTo(rSize, rSize, 0, 0, 1, 0, h - rSize - 15);
+		c.lineTo(truePos - 7.5, h - 7.5);
+		c.lineTo(rSize, h - 7.5);
+		c.arcTo(rSize, rSize, 0, 0, 1, 0, h - rSize - 7.5);
 	}
 	else if (pointerPos === mxMockupC.POINTER_TOP)
 	{
 		c.setGradient('#000000', '#888888', 0, 0, w, h, mxConstants.DIRECTION_NORTH, 1, 1);
-		c.moveTo(0, rSize + 15);
-		c.arcTo(rSize, rSize, 0, 0, 1, rSize, 15);
-		c.lineTo(truePos - 15, 15);
+		c.moveTo(0, rSize + 7.5);
+		c.arcTo(rSize, rSize, 0, 0, 1, rSize, 7.5);
+		c.lineTo(truePos - 7.5, 7.5);
 		c.lineTo(truePos, 0);
-		c.lineTo(truePos + 15, 15);
-		c.lineTo(w - rSize, 15);
-		c.arcTo(rSize, rSize, 0, 0, 1, w, rSize + 15);
+		c.lineTo(truePos + 7.5, 7.5);
+		c.lineTo(w - rSize, 7.5);
+		c.arcTo(rSize, rSize, 0, 0, 1, w, rSize + 7.5);
 		c.lineTo(w, h - rSize);
 		c.arcTo(rSize, rSize, 0, 0, 1, w - rSize, h);
 		c.lineTo(rSize, h);
@@ -3782,30 +3860,30 @@ mxShapeMockupiLocationBar.prototype.foreground = function(c, x, y, w, h)
 	var locText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, 'Some Location');
 	c.setAlpha(1);
 	c.setFontColor('#ffffff');
-	c.setFontSize(19);
+	c.setFontSize(9.5);
 
 	if (pointerPos === mxMockupC.POINTER_BOTTOM)
 	{
-		c.text(10, (h - 15) * 0.5, 0, 0, locText, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
-		c.translate(w - 40, (h - 15) * 0.5 - 15);
+		c.text(5, (h - 7.5) * 0.5, 0, 0, locText, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+		c.translate(w - 20, (h - 7.5) * 0.5 - 7.5);
 	}
 	else
 	{
-		c.text(10, (h + 15) * 0.5, 0, 0, locText, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
-		c.translate(w - 40, (h + 15) * 0.5 - 15);
+		c.text(5, (h + 7.5) * 0.5, 0, 0, locText, mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+		c.translate(w - 20, (h + 7.5) * 0.5 - 7.5);
 	}		
 
-	w = 30;
-	h = 30;
+	w = 15;
+	h = 15;
 
 	c.setGradient('#8BbEff', '#135Ec8', 0, 0, w, h, mxConstants.DIRECTION_SOUTH, 1, 1);
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor('#ffffff');
-	c.ellipse(0, 0, w, h, 5, 5);
+	c.ellipse(0, 0, w, h);
 	c.fillAndStroke();
 
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.begin();
 	c.moveTo(w * 0.4, h * 0.22);
 	c.lineTo(w * 0.65, h * 0.5);
@@ -3842,7 +3920,7 @@ mxUtils.extend(mxShapeMockupiCallDialog, mxShape);
  */
 mxShapeMockupiCallDialog.prototype.paintVertexShape = function(c, x, y, w, h)
 {
-	var rSize = 10;
+	var rSize = 5;
 	c.translate(x, y);
 	this.background(c, x, y, w, h, rSize);
 	c.setShadow(false);
@@ -3853,7 +3931,7 @@ mxShapeMockupiCallDialog.prototype.background = function(c, x, y, w, h, rSize)
 {
 	c.setAlpha(0.8);
 	c.setStrokeColor('#888888');
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setFillColor('#000000');
 	c.roundrect(0, 0, w, h, rSize, rSize);
 	c.fillAndStroke();
@@ -3873,7 +3951,7 @@ mxShapeMockupiCallDialog.prototype.foreground = function(c, x, y, w, h, rSize)
 
 	c.setStrokeColor('#000000');
 	c.setFillColor('#ffffff');
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.roundrect(w * 0.1433, h * 0.104, w * 0.0417, h * 0.148, w * 0.02, h * 0.024);
 	c.fill();
 
@@ -3934,7 +4012,7 @@ mxShapeMockupiCallDialog.prototype.foreground = function(c, x, y, w, h, rSize)
 	c.close();
 	c.fill();
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor('#ffffff');
 	c.begin();
 	c.moveTo(w * 0.8383, h * 0.16);
@@ -3983,7 +4061,7 @@ mxShapeMockupiCallDialog.prototype.foreground = function(c, x, y, w, h, rSize)
 	c.fill();
 
 	c.setFontColor('#ffffff');
-	c.setFontSize(17);
+	c.setFontSize(8.5);
 	c.text(w * 0.1667, h * 0.35, 0, 0, 'mute', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.text(w * 0.5, h * 0.35, 0, 0, 'keypad', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.text(w * 0.8333, h * 0.35, 0, 0, 'speaker', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
@@ -4042,7 +4120,7 @@ mxShapeMockupiCallButtons.prototype.paintVertexShape = function(c, x, y, w, h)
 
 mxShapeMockupiCallButtons.prototype.background = function(c, x, y, w, h)
 {
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.setStrokeColor('#008cff');
 	c.setGradient('#0F1B2B', '#4F5B6B', 0, 0, w, h, mxConstants.DIRECTION_NORTH, 1, 1);
 	c.rect(0, 0, w, h);
@@ -4068,7 +4146,7 @@ mxShapeMockupiCallButtons.prototype.foreground = function(c, x, y, w, h)
 	c.lineTo(w * 0.6667, h);
 	c.stroke();
 
-	c.setFontSize(31);
+	c.setFontSize(15.5);
 	c.setFontColor('#ffffff');
 	c.setFontStyle(mxConstants.FONT_BOLD);
 
@@ -4086,9 +4164,9 @@ mxShapeMockupiCallButtons.prototype.foreground = function(c, x, y, w, h)
 	c.text(w * 0.5, h * 0.5534, 0, 0, '7', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.text(w * 0.8333, h * 0.5534, 0, 0, '8', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
-	c.setFontSize(55);
+	c.setFontSize(27.5);
 	c.text(w * 0.1667, h * 0.76, 0, 0, '*', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
-	c.setFontSize(31);
+	c.setFontSize(15.5);
 	c.text(w * 0.5, h * 0.72, 0, 0, '0', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.text(w * 0.8333, h * 0.75, 0, 0, '#', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
@@ -4099,7 +4177,7 @@ mxShapeMockupiCallButtons.prototype.foreground = function(c, x, y, w, h)
 	c.text(w * 0.5, h * 0.9168, 0, 0, 'Call', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
 	c.setFontStyle(0);
-	c.setFontSize(15);
+	c.setFontSize(8);
 	c.setFontColor('#bbbbbb');
 
 	c.text(w * 0.5, h * 0.28, 0, 0, 'ABC', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
@@ -4132,7 +4210,7 @@ mxShapeMockupiCallButtons.prototype.foreground = function(c, x, y, w, h)
 	c.fill();
 
 	c.setStrokeColor('#ffffff');
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.setLineJoin('round');
 	c.begin();
 	c.moveTo(w * 0.79, h * 0.89);
@@ -4143,7 +4221,6 @@ mxShapeMockupiCallButtons.prototype.foreground = function(c, x, y, w, h)
 	c.close();
 	c.fillAndStroke();
 
-//	c.setGradient('#0F1B2B', '#4F5B6B', null, null, null, null, mxConstants.DIRECTION_NORTH, 1, 1);
 	c.setStrokeColor('#0F1B2B');
 	c.begin();
 	c.moveTo(w * 0.82, h * 0.907);
@@ -4194,11 +4271,11 @@ mxShapeMockupiOption.prototype.background = function(c, x, y, w, h)
 	barPos = Math.min(barPos, 100);
 	barPos = Math.max(barPos, 0);
 	var pointerPos = mxUtils.getValue(this.style, mxMockupC.POINTER_POS, mxMockupC.POINTER_BOTTOM);
-	var rSize = 5;
-	var deadzone = rSize + 15; // rounding + pointer width / 2 
+	var rSize = 2.5;
+	var deadzone = rSize + 7.5; // rounding + pointer width / 2 
 	var virRange = w - 2 * deadzone;
 	var truePos = deadzone + virRange * barPos / 100;
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.setStrokeColor('#000000');
 	c.setAlpha(0.9);
 	c.begin();
@@ -4210,24 +4287,24 @@ mxShapeMockupiOption.prototype.background = function(c, x, y, w, h)
 		c.arcTo(rSize, rSize, 0, 0, 1, rSize, 0);
 		c.lineTo(w - rSize, 0);
 		c.arcTo(rSize, rSize, 0, 0, 1, w, rSize);
-		c.lineTo(w, h - rSize - 15);
-		c.arcTo(rSize, rSize, 0, 0, 1, w - rSize, h - 15);
-		c.lineTo(truePos + 15, h - 15);
+		c.lineTo(w, h - rSize - 7.5);
+		c.arcTo(rSize, rSize, 0, 0, 1, w - rSize, h - 7.5);
+		c.lineTo(truePos + 7.5, h - 7.5);
 		c.lineTo(truePos, h);
-		c.lineTo(truePos - 15, h - 15);
-		c.lineTo(rSize, h - 15);
-		c.arcTo(rSize, rSize, 0, 0, 1, 0, h - rSize - 15);
+		c.lineTo(truePos - 7.5, h - 7.5);
+		c.lineTo(rSize, h - 7.5);
+		c.arcTo(rSize, rSize, 0, 0, 1, 0, h - rSize - 7.5);
 	}
 	else if (pointerPos === mxMockupC.POINTER_TOP)
 	{
 		c.setGradient('#000000', '#888888', 0, 0, w, h, mxConstants.DIRECTION_NORTH, 1, 1);
-		c.moveTo(0, rSize + 15);
-		c.arcTo(rSize, rSize, 0, 0, 1, rSize, 15);
-		c.lineTo(truePos - 15, 15);
+		c.moveTo(0, rSize + 7.5);
+		c.arcTo(rSize, rSize, 0, 0, 1, rSize, 7.5);
+		c.lineTo(truePos - 7.5, 7.5);
 		c.lineTo(truePos, 0);
-		c.lineTo(truePos + 15, 15);
-		c.lineTo(w - rSize, 15);
-		c.arcTo(rSize, rSize, 0, 0, 1, w, rSize + 15);
+		c.lineTo(truePos + 7.5, 7.5);
+		c.lineTo(w - rSize, 7.5);
+		c.arcTo(rSize, rSize, 0, 0, 1, w, rSize + 7.5);
 		c.lineTo(w, h - rSize);
 		c.arcTo(rSize, rSize, 0, 0, 1, w - rSize, h);
 		c.lineTo(rSize, h);
@@ -4244,15 +4321,15 @@ mxShapeMockupiOption.prototype.foreground = function(c, x, y, w, h)
 	var pointerPos = mxUtils.getValue(this.style, mxMockupC.POINTER_POS, mxMockupC.POINTER_BOTTOM);
 	c.setAlpha(1);
 	c.setFontColor('#ffffff');
-	c.setFontSize(19);
+	c.setFontSize(9.5);
 	
 	if (pointerPos === mxMockupC.POINTER_BOTTOM)
 	{
-		c.text(w * 0.5, (h - 15) * 0.5, 0, 0, locText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+		c.text(w * 0.5, (h - 7.5) * 0.5, 0, 0, locText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	}
 	else
 	{
-		c.text(w * 0.5, (h + 15) * 0.5, 0, 0, locText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+		c.text(w * 0.5, (h + 7.5) * 0.5, 0, 0, locText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	}
 };
 
@@ -4287,7 +4364,7 @@ mxShapeMockupiAlphaList.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	c.translate(x, y);
 	c.setShadow(false);
-	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '12');
+	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '8');
 
 	c.setFontColor('#999999');
 	c.setFontSize(fontSize);
@@ -4320,12 +4397,12 @@ mxShapeMockupiAlphaList.prototype.paintVertexShape = function(c, x, y, w, h)
 	c.text(w * 0.5, h * 0.966, 0, 0, '#', mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
 	c.setStrokeColor('#999999');
-	c.ellipse(w * 0.5 - 4.5, h * 0.0345 - 7, 9, 9);
+	c.ellipse(w * 0.5 - 2.25, h * 0.0345 - 3.5, 4.5, 4.5);
 	c.stroke();
 
 	c.begin();
-	c.moveTo(w * 0.5 - 8.5, h * 0.0345 + 6);
-	c.lineTo(w * 0.5 - 3.5, h * 0.0345);
+	c.moveTo(w * 0.5 - 4.25, h * 0.0345 + 3);
+	c.lineTo(w * 0.5 - 1.75, h * 0.0345);
 	c.stroke();
 };
 
@@ -4361,7 +4438,7 @@ mxShapeMockupiHorButtonBar.prototype.paintVertexShape = function(c, x, y, w, h)
 	var textStrings = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, '+Button 1, Button 2, Button 3').toString().split(',');
 	var fontColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR, '#666666');
 	var selectedFontColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR2, '#ffffff');
-	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '17').toString();
+	var fontSize = mxUtils.getValue(this.style, mxConstants.STYLE_FONTSIZE, '8.5').toString();
 	var frameColor = mxUtils.getValue(this.style, mxConstants.STYLE_STROKECOLOR, '#666666');
 	var separatorColor = mxUtils.getValue(this.style, mxMockupC.STYLE_STROKECOLOR2, '#c4c4c4');
 	var bgColor = mxUtils.getValue(this.style, mxConstants.STYLE_FILLCOLOR, '#ffffff');
@@ -4370,8 +4447,8 @@ mxShapeMockupiHorButtonBar.prototype.paintVertexShape = function(c, x, y, w, h)
 	var buttonWidths = new Array(buttonNum);
 	var buttonTotalWidth = 0;
 	var selectedButton = -1;
-	var rSize = 5; //rounding size
-	var labelOffset = 5;
+	var rSize = 2.5; //rounding size
+	var labelOffset = 2.5;
 
 	for (var i = 0; i < buttonNum; i++)
 	{
@@ -4388,7 +4465,7 @@ mxShapeMockupiHorButtonBar.prototype.paintVertexShape = function(c, x, y, w, h)
 		buttonTotalWidth += buttonWidths[i];
 	}
 
-	var trueH = Math.max(h, fontSize * 1.5, 20);
+	var trueH = Math.max(h, fontSize * 1.5, 10);
 	var minW = 2 * labelOffset * buttonNum + buttonTotalWidth;
 	var trueW = Math.max(w, minW);
 
@@ -4572,7 +4649,7 @@ mxShapeMockupiPin.prototype.paintVertexShape = function(c, x, y, w, h)
 	c.setShadow(false);
 	c.translate(x, y);
 
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor('#666666');
 	c.begin();
 	c.moveTo(w * 0.5, h * 0.4);
@@ -4622,8 +4699,8 @@ mxUtils.extend(mxShapeMockupiVideoControls, mxShape);
 mxShapeMockupiVideoControls.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	c.translate(x, y);
-	var rSize = 10;
-	c.setStrokeWidth(2);
+	var rSize = 5;
+	c.setStrokeWidth(1);
 	c.setFillColor('#000000');
 	c.setStrokeColor('#bbbbbb');
 	c.setAlpha(0.7);
@@ -4654,82 +4731,82 @@ mxShapeMockupiVideoControls.prototype.foreground = function(c, w, h, rSize)
 	var iconY = h * 0.35;
 
 	c.begin();
-	c.moveTo(iconX - 15, iconY - 5);
-	c.arcTo(12, 12, 0, 0, 1, iconX, iconY - 5);
-	c.arcTo(12, 12, 0, 0, 1, iconX + 15, iconY - 5);
-	c.lineTo(iconX + 15, iconY + 8);
-	c.arcTo(12, 12, 0, 0, 0, iconX, iconY + 8);
-	c.arcTo(12, 12, 0, 0, 0, iconX - 15, iconY + 8);
+	c.moveTo(iconX - 7.5, iconY - 2.5);
+	c.arcTo(6, 6, 0, 0, 1, iconX, iconY - 2.5);
+	c.arcTo(6, 6, 0, 0, 1, iconX + 7.5, iconY - 2.5);
+	c.lineTo(iconX + 7.5, iconY + 4);
+	c.arcTo(6, 6, 0, 0, 0, iconX, iconY + 4);
+	c.arcTo(6, 6, 0, 0, 0, iconX - 7.5, iconY + 4);
 	c.close();
 	c.stroke();
 
 	c.begin();
-	c.moveTo(iconX, iconY - 5);
-	c.lineTo(iconX, iconY + 8);
+	c.moveTo(iconX, iconY - 2.5);
+	c.lineTo(iconX, iconY + 4);
 	c.stroke();
 
 	iconX = w * 0.3;
-	c.rect(iconX - 15, iconY - 10, 2, 20);
+	c.rect(iconX - 7.5, iconY - 5, 1, 10);
 	c.fill();
 
 	c.begin();
-	c.moveTo(iconX - 13, iconY);
-	c.lineTo(iconX + 1, iconY - 10);
-	c.lineTo(iconX + 1, iconY + 10);
+	c.moveTo(iconX - 6.5, iconY);
+	c.lineTo(iconX + 0.5, iconY - 5);
+	c.lineTo(iconX + 0.5, iconY + 5);
 	c.close();
 	c.fill();
 
 	c.begin();
-	c.moveTo(iconX + 1, iconY);
-	c.lineTo(iconX + 15, iconY - 10);
-	c.lineTo(iconX + 15, iconY + 10);
+	c.moveTo(iconX + 0.5, iconY);
+	c.lineTo(iconX + 7.5, iconY - 5);
+	c.lineTo(iconX + 7.5, iconY + 5);
 	c.close();
 	c.fill();
 
 	iconX = w * 0.5;
 	c.begin();
-	c.moveTo(iconX - 12, iconY - 10);
-	c.lineTo(iconX + 12, iconY);
-	c.lineTo(iconX - 12, iconY + 10);
+	c.moveTo(iconX - 6, iconY - 5);
+	c.lineTo(iconX + 6, iconY);
+	c.lineTo(iconX - 6, iconY + 5);
 	c.close();
 	c.fill();
 
 	iconX = w * 0.7;
 	c.begin();
-	c.moveTo(iconX - 15, iconY - 10);
-	c.lineTo(iconX - 1, iconY);
-	c.lineTo(iconX - 15, iconY + 10);
+	c.moveTo(iconX - 7.5, iconY - 5);
+	c.lineTo(iconX - 0.5, iconY);
+	c.lineTo(iconX - 7.5, iconY + 5);
 	c.close();
 	c.fill();
 	c.begin();
-	c.moveTo(iconX - 1, iconY - 10);
-	c.lineTo(iconX + 13, iconY);
-	c.lineTo(iconX - 1, iconY + 10);
+	c.moveTo(iconX - 0.5, iconY - 5);
+	c.lineTo(iconX + 6.5, iconY);
+	c.lineTo(iconX - 0.5, iconY + 5);
 	c.close();
 	c.fill();
-	c.rect(iconX + 13, iconY - 10, 2, 20);
+	c.rect(iconX + 6.5, iconY - 5, 1, 10);
 	c.fill();
 
 	iconX = w * 0.9;
-	c.rect(iconX - 15, iconY - 8, 30, 16);
+	c.rect(iconX - 7.5, iconY - 4, 15, 8);
 	c.stroke();
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.begin();
-	c.moveTo(iconX - 15, iconY - 8);
-	c.lineTo(iconX, iconY + 3);
-	c.lineTo(iconX + 15, iconY - 8);
-	c.stroke();
-	c.begin();
-	c.moveTo(iconX - 15, iconY + 8);
-	c.lineTo(iconX - 4, iconY);
+	c.moveTo(iconX - 7.5, iconY - 4);
+	c.lineTo(iconX, iconY + 1.5);
+	c.lineTo(iconX + 7.5, iconY - 4);
 	c.stroke();
 	c.begin();
-	c.moveTo(iconX + 15, iconY + 8);
-	c.lineTo(iconX + 4, iconY);
+	c.moveTo(iconX - 7.5, iconY + 4);
+	c.lineTo(iconX - 2, iconY);
+	c.stroke();
+	c.begin();
+	c.moveTo(iconX + 7.5, iconY + 4);
+	c.lineTo(iconX + 2, iconY);
 	c.stroke();
 
-	c.setGradient('#444444', '#ffffff', w * 0.1, h * 0.75 - 5, w * 0.8, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
-	c.roundrect(w * 0.1, h * 0.75 - 5, w * 0.8, 10, 5, 5);
+	c.setGradient('#444444', '#ffffff', w * 0.1, h * 0.75 - 2.5, w * 0.8, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.roundrect(w * 0.1, h * 0.75 - 2.5, w * 0.8, 5, 2.5, 2.5);
 	c.fill();
 
 	var barPos = mxUtils.getValue(this.style, mxMockupC.BAR_POS, '80');
@@ -4741,16 +4818,16 @@ mxShapeMockupiVideoControls.prototype.foreground = function(c, w, h, rSize)
 
 	c.setGradient('#96D1FF', '#003377', w * 0.1, h * 0.75 - 5, truePos - w * 0.1, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.begin();
-	c.moveTo(truePos, h * 0.75 - 5);
-	c.lineTo(truePos, h * 0.75 + 5);
-	c.lineTo(w * 0.1 + 5, h * 0.75 + 5);
-	c.arcTo(5, 5, 0, 0, 1, w * 0.1 + 5, h * 0.75 - 5);
+	c.moveTo(truePos, h * 0.75 - 2.5);
+	c.lineTo(truePos, h * 0.75 + 2.5);
+	c.lineTo(w * 0.1 + 2.5, h * 0.75 + 2.5);
+	c.arcTo(2.5, 2.5, 0, 0, 1, w * 0.1 + 2.5, h * 0.75 - 2.5);
 	c.close();
 	c.fill();
 
 	c.setStrokeColor('#999999');
-	c.setGradient('#444444', '#ffffff', truePos - 10, h * 0.75 - 10, 20, 20, mxConstants.DIRECTION_NORTH, 1, 1);
-	c.ellipse(truePos - 10, h * 0.75 - 10, 20, 20);
+	c.setGradient('#444444', '#ffffff', truePos - 5, h * 0.75 - 5, 10, 10, mxConstants.DIRECTION_NORTH, 1, 1);
+	c.ellipse(truePos - 5, h * 0.75 - 5, 10, 10);
 	c.fillAndStroke();
 
 	c.setStrokeColor('#dddddd');
@@ -4799,36 +4876,35 @@ mxShapeMockupiURLBar.prototype.paintVertexShape = function(c, x, y, w, h)
 
 mxShapeMockupiURLBar.prototype.foreground = function(c, w, h)
 {
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.setFillColor('#ffffff');
 	c.setStrokeColor('#008cff');
-	c.roundrect(w * 0.0287, h * 0.625 - 12.5, w * 0.7184, 25, 12.5, 12.5);
+	c.roundrect(w * 0.0287, h * 0.625 - 6.25, w * 0.7184, 12.5, 6.25, 6.25);
 	c.fillAndStroke();
 
-	c.setGradient('#cccccc', '#001144', w * 0.7816, h * 0.625 - 12.5, w * 0.1868, 25, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.setGradient('#cccccc', '#001144', w * 0.7816, h * 0.625 - 6.25, w * 0.1868, 12.5, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.setStrokeColor('#000000');
-	c.roundrect(w * 0.7816, h * 0.625 - 12.5, w * 0.1868, 25, 5, 5);
+	c.roundrect(w * 0.7816, h * 0.625 - 6.25, w * 0.1868, 12.5, 2.5, 2.5);
 	c.fillAndStroke();
 
 	c.setFillColor('#bbbbbb');
-	c.ellipse(w * 0.7471 - 23, h * 0.625 - 10, 20, 20);
+	c.ellipse(w * 0.7471 - 11.5, h * 0.625 - 5, 10, 10);
 	c.fill();
 
 	c.setStrokeColor('#ffffff');
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.begin();
-	c.moveTo(w * 0.7471 - 17, h * 0.625 - 5);
-	c.lineTo(w * 0.7471 - 7, h * 0.625 + 5);
-	c.moveTo(w * 0.7471 - 17, h * 0.625 + 5);
-	c.lineTo(w * 0.7471 - 7, h * 0.625 - 5);
+	c.moveTo(w * 0.7471 - 8.5, h * 0.625 - 2.5);
+	c.lineTo(w * 0.7471 - 3.5, h * 0.625 + 2.5);
+	c.moveTo(w * 0.7471 - 8.5, h * 0.625 + 2.5);
+	c.lineTo(w * 0.7471 - 3.5, h * 0.625 - 2.5);
 	c.stroke();
 
 	var fieldText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, '').toString().split(',');
 	c.setFontColor('#425664');
 	c.setFontStyle(mxConstants.FONT_BOLD);
-	c.setFontSize(14);
+	c.setFontSize(8);
 	c.text(w * 0.5, h * 0.2, 0, 0, fieldText[0], mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
-	c.setFontSize(12);
 	c.setFontColor('#000000');
 	c.text(w * 0.06, h * 0.625, 0, 0, fieldText[1], mxConstants.ALIGN_LEFT, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 	c.setFontColor('#ffffff');
@@ -4872,9 +4948,9 @@ mxShapeMockupiSlider.prototype.paintVertexShape = function(c, x, y, w, h)
 
 mxShapeMockupiSlider.prototype.foreground = function(c, w, h)
 {
-	c.setStrokeWidth(1);
-	c.setGradient('#444444', '#ffffff', 0, h * 0.5 - 5, w, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
-	c.roundrect(0, h * 0.5 - 5, w, 10, 5, 5);
+	c.setStrokeWidth(0.5);
+	c.setGradient('#444444', '#ffffff', 0, h * 0.5 - 2.5, w, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.roundrect(0, h * 0.5 - 2.5, w, 5, 2.5, 2.5);
 	c.fill();
 
 	var barPos = mxUtils.getValue(this.style, mxMockupC.BAR_POS, '80');
@@ -4884,18 +4960,18 @@ mxShapeMockupiSlider.prototype.foreground = function(c, w, h)
 	var virRange = w - 2 * deadzone;
 	var truePos = deadzone + virRange * barPos / 100;
 
-	c.setGradient('#96D1FF', '#003377', 5, h * 0.5 - 5, truePos - 5, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.setGradient('#96D1FF', '#003377', 2.5, h * 0.5 - 2.5, truePos - 2.5, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.begin();
-	c.moveTo(truePos, h * 0.5 - 5);
-	c.lineTo(truePos, h * 0.5 + 5);
-	c.lineTo(5, h * 0.5 + 5);
-	c.arcTo(5, 5, 0, 0, 1, 5, h * 0.5 - 5);
+	c.moveTo(truePos, h * 0.5 - 2.5);
+	c.lineTo(truePos, h * 0.5 + 2.5);
+	c.lineTo(2.5, h * 0.5 + 2.5);
+	c.arcTo(2.5, 2.5, 0, 0, 1, 2.5, h * 0.5 - 2.5);
 	c.close();
 	c.fill();
 
 	c.setStrokeColor('#999999');
-	c.setGradient('#444444', '#ffffff', truePos - 10, h * 0.5 - 10, 20, 20, mxConstants.DIRECTION_NORTH, 1, 1);
-	c.ellipse(truePos - 10, h * 0.5 - 10, 20, 20);
+	c.setGradient('#444444', '#ffffff', truePos - 5, h * 0.5 - 5, 10, 10, mxConstants.DIRECTION_NORTH, 1, 1);
+	c.ellipse(truePos - 5, h * 0.5 - 5, 10, 10);
 	c.fillAndStroke();
 };
 
@@ -4936,9 +5012,9 @@ mxShapeMockupiProgressBar.prototype.paintVertexShape = function(c, x, y, w, h)
 
 mxShapeMockupiProgressBar.prototype.foreground = function(c, w, h)
 {
-	c.setStrokeWidth(1);
-	c.setGradient('#444444', '#ffffff', 0, h * 0.5 - 5, w, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
-	c.roundrect(0, h * 0.5 - 5, w, 10, 5, 5);
+	c.setStrokeWidth(0.5);
+	c.setGradient('#444444', '#ffffff', 0, h * 0.5 - 2.5, w, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.roundrect(0, h * 0.5 - 2.5, w, 5, 2.5, 2.5);
 	c.fill();
 
 	var barPos = mxUtils.getValue(this.style, mxMockupC.BAR_POS, '80');
@@ -4948,12 +5024,12 @@ mxShapeMockupiProgressBar.prototype.foreground = function(c, w, h)
 	var virRange = w - 2 * deadzone;
 	var truePos = deadzone + virRange * barPos / 100;
 
-	c.setGradient('#96D1FF', '#003377', 5, h * 0.5 - 5, truePos - 5, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
+	c.setGradient('#96D1FF', '#003377', 2.5, h * 0.5 - 2.5, truePos - 2.5, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
 	c.begin();
-	c.moveTo(truePos, h * 0.5 - 5);
-	c.arcTo(5, 5, 0, 0, 1, truePos, h * 0.5 + 5);
-	c.lineTo(5, h * 0.5 + 5);
-	c.arcTo(5, 5, 0, 0, 1, 5, h * 0.5 - 5);
+	c.moveTo(truePos, h * 0.5 - 2.5);
+	c.arcTo(2.5, 2.5, 0, 0, 1, truePos, h * 0.5 + 2.5);
+	c.lineTo(2.5, h * 0.5 + 2.5);
+	c.arcTo(2.5, 2.5, 0, 0, 1, 2.5, h * 0.5 - 2.5);
 	c.close();
 	c.fill();
 };
@@ -4995,9 +5071,9 @@ mxShapeMockupiCloudProgressBar.prototype.paintVertexShape = function(c, x, y, w,
 
 mxShapeMockupiCloudProgressBar.prototype.foreground = function(c, w, h)
 {
-	c.setStrokeWidth(1);
+	c.setStrokeWidth(0.5);
 	c.setFillColor('#5C6E86');
-	c.rect(0, h * 0.5 - 5, w, 10);
+	c.rect(0, h * 0.5 - 2.5, w, 5);
 	c.fill();
 
 	var barPos = mxUtils.getValue(this.style, mxMockupC.BAR_POS, '80');
@@ -5008,7 +5084,7 @@ mxShapeMockupiCloudProgressBar.prototype.foreground = function(c, w, h)
 	var truePos = deadzone + virRange * barPos / 100;
 
 	c.setFillColor('#8AD155');
-	c.rect(0, h * 0.5 - 5, truePos, 10);
+	c.rect(0, h * 0.5 - 2.5, truePos, 5);
 	c.fill();
 };
 
@@ -5056,7 +5132,7 @@ mxShapeMockupiDownloadBar.prototype.foreground = function(c, w, h)
 	var fieldText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, '');
 	c.setFontColor('#ffffff');
 	c.setFontStyle(mxConstants.FONT_BOLD);
-	c.setFontSize(14);
+	c.setFontSize(8);
 	c.text(w * 0.5, h * 0.2, 0, 0, fieldText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 
 	var barPos = mxUtils.getValue(this.style, mxMockupC.BAR_POS, '80');
@@ -5066,17 +5142,17 @@ mxShapeMockupiDownloadBar.prototype.foreground = function(c, w, h)
 	var virRange = w - 2 * deadzone;
 	var truePos = deadzone + virRange * barPos / 100;
 
-	c.setStrokeWidth(1);
-	c.setGradient('#96D1FF', '#003377', deadzone, h * 0.65 - 5, w - 2 * deadzone, 10, mxConstants.DIRECTION_NORTH, 1, 1);
-	c.roundrect(deadzone, h * 0.65 - 5, w - 2 * deadzone, 10, 5, 5);
+	c.setStrokeWidth(0.5);
+	c.setGradient('#96D1FF', '#003377', deadzone, h * 0.65 - 2.5, w - 2 * deadzone, 5, mxConstants.DIRECTION_NORTH, 1, 1);
+	c.roundrect(deadzone, h * 0.65 - 2.5, w - 2 * deadzone, 5, 2.5, 2.5);
 	c.fill();
 
-	c.setGradient('#aaaaaa', '#ffffff', deadzone + 5, h * 0.65 - 5, truePos - deadzone - 5, 10, mxConstants.DIRECTION_NORTH, 1, 1);
+	c.setGradient('#aaaaaa', '#ffffff', deadzone + 2.5, h * 0.65 - 2.5, truePos - deadzone - 2.5, 5, mxConstants.DIRECTION_NORTH, 1, 1);
 	c.begin();
-	c.moveTo(truePos, h * 0.65 - 5);
-	c.arcTo(5, 5, 0, 0, 1, truePos, h * 0.65 + 5);
-	c.lineTo(deadzone + 5, h * 0.65 + 5);
-	c.arcTo(5, 5, 0, 0, 1, deadzone + 5, h * 0.65 - 5);
+	c.moveTo(truePos, h * 0.65 - 2.5);
+	c.arcTo(2.5, 2.5, 0, 0, 1, truePos, h * 0.65 + 2.5);
+	c.lineTo(deadzone + 2.5, h * 0.65 + 2.5);
+	c.arcTo(2.5, 2.5, 0, 0, 1, deadzone + 2.5, h * 0.65 - 2.5);
 	c.close();
 	c.fill();
 };
@@ -5111,8 +5187,8 @@ mxUtils.extend(mxShapeMockupiScreenNameBar, mxShape);
 mxShapeMockupiScreenNameBar.prototype.paintVertexShape = function(c, x, y, w, h)
 {
 	c.translate(x, y);
-	var rSize = 10;
-	c.setStrokeWidth(1);
+	var rSize = 5;
+	c.setStrokeWidth(0.5);
 	var fillColor2 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR2, '#00ff00');
 	c.setFillColor(fillColor2);
 	c.rect(0, 0, w, h);
@@ -5132,7 +5208,7 @@ mxShapeMockupiScreenNameBar.prototype.foreground = function(c, w, h, rSize)
 	var fieldText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, '');
 	var textColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR, '#00ff00');
 	c.setFontColor(textColor);
-	c.setFontSize(19);
+	c.setFontSize(9.5);
 	c.text(w * 0.5, h * 0.45, 0, 0, fieldText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
@@ -5241,7 +5317,7 @@ mxUtils.extend(mxShapeMockupiCopy, mxShape);
  */
 mxShapeMockupiCopy.prototype.paintVertexShape = function(c, x, y, w, h)
 {
-	var rSize = 10;
+	var rSize = 5;
 	c.translate(x, y);
 	this.background(c, w, h, rSize);
 	c.setShadow(false);
@@ -5256,13 +5332,13 @@ mxShapeMockupiCopy.prototype.background = function(c, w, h, rSize)
 	c.arcTo(rSize, rSize, 0, 0, 1, rSize, 0);
 	c.lineTo(w - rSize, 0);
 	c.arcTo(rSize, rSize, 0, 0, 1, w, rSize);
-	c.lineTo(w, h - rSize - 15);
-	c.arcTo(rSize, rSize, 0, 0, 1, w - rSize, h - 15);
-	c.lineTo(w * 0.5 + 15, h - 15);
+	c.lineTo(w, h - rSize - 7.5);
+	c.arcTo(rSize, rSize, 0, 0, 1, w - rSize, h - 7.5);
+	c.lineTo(w * 0.5 + 7.5, h - 7.5);
 	c.lineTo(w * 0.5, h);
-	c.lineTo(w * 0.5 - 15, h - 15);
-	c.lineTo(rSize, h - 15);
-	c.arcTo(rSize, rSize, 0, 0, 1, 0, h - rSize - 15);
+	c.lineTo(w * 0.5 - 7.5, h - 7.5);
+	c.lineTo(rSize, h - 7.5);
+	c.arcTo(rSize, rSize, 0, 0, 1, 0, h - rSize - 7.5);
 	c.close();
 	c.fillAndStroke();
 };
@@ -5276,16 +5352,16 @@ mxShapeMockupiCopy.prototype.foreground = function(c, w, h, rSize)
 	c.arcTo(rSize, rSize, 0, 0, 1, rSize, 0);
 	c.lineTo(w - rSize, 0);
 	c.arcTo(rSize, rSize, 0, 0, 1, w, rSize);
-	c.lineTo(w, (h - 15) * 0.5);
-	c.lineTo(0, (h - 15) * 0.5);
+	c.lineTo(w, (h - 7.5) * 0.5);
+	c.lineTo(0, (h - 7.5) * 0.5);
 	c.close();
 	c.fill();
 
 	var fieldText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, '');
 	var textColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR, '#00ff00');
 	c.setFontColor(textColor);
-	c.setFontSize(17);
-	c.text(w * 0.5, (h - 15)* 0.45, 0, 0, fieldText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.setFontSize(8.5);
+	c.text(w * 0.5, (h - 7.5)* 0.45, 0, 0, fieldText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_ICOPY] = mxShapeMockupiCopy;
@@ -5317,7 +5393,7 @@ mxUtils.extend(mxShapeMockupiCopyArea, mxShape);
  */
 mxShapeMockupiCopyArea.prototype.paintVertexShape = function(c, x, y, w, h)
 {
-	var rSize = 10;
+	var rSize = 5;
 	c.translate(x, y);
 	this.background(c, w, h, rSize);
 	c.setShadow(false);
@@ -5328,17 +5404,17 @@ mxShapeMockupiCopyArea.prototype.paintVertexShape = function(c, x, y, w, h)
 mxShapeMockupiCopyArea.prototype.background = function(c, w, h, rSize)
 {
 	c.begin();
-	c.moveTo(w * 0.5 - 40, 0 + rSize);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 40 + rSize, 0);
-	c.lineTo(w * 0.5 + 40 - rSize, 0);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 40, rSize);
-	c.lineTo(w * 0.5 + 40, 40 - rSize);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 40 - rSize, 40);
-	c.lineTo(w * 0.5 + 15, 40);
-	c.lineTo(w * 0.5, 55);
-	c.lineTo(w * 0.5 - 15, 40);
-	c.lineTo(w * 0.5 - 40 + rSize, 40);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 40, 40 - rSize);
+	c.moveTo(w * 0.5 - 20, 0 + rSize);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 20 + rSize, 0);
+	c.lineTo(w * 0.5 + 20 - rSize, 0);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 20, rSize);
+	c.lineTo(w * 0.5 + 20, 20 - rSize);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 20 - rSize, 20);
+	c.lineTo(w * 0.5 + 7.5, 20);
+	c.lineTo(w * 0.5, 27.5);
+	c.lineTo(w * 0.5 - 7.5, 20);
+	c.lineTo(w * 0.5 - 20 + rSize, 20);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 20, 20 - rSize);
 	c.close();
 	c.fillAndStroke();
 };
@@ -5347,24 +5423,24 @@ mxShapeMockupiCopyArea.prototype.foreground = function(c, w, h, rSize)
 {
 	c.setAlpha(0.3);
 	c.setFillColor('#2266ff');
-	c.rect(5, 55, w - 10, h - 60);
+	c.rect(2.5, 27.5, w - 5, h - 30);
 	c.fill();
 	c.setAlpha(1);
 
-	if (h > 55)
+	if (h > 27.5)
 	{
 		c.setStrokeColor('#ffffff');
-		c.setGradient('#88ddff', '#2266ff', w * 0.5 - 5, 50, 10, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
-		c.ellipse(w * 0.5 - 5, 50, 10, 10);
+		c.setGradient('#88ddff', '#2266ff', w * 0.5 - 2.5, 25, 5, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
+		c.ellipse(w * 0.5 - 2.5, 25, 5, 5);
 		c.fillAndStroke();
-		c.setGradient('#88ddff', '#2266ff', w * 0.5 - 5, h - 10, 10, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
-		c.ellipse(w * 0.5 - 5, h - 10, 10, 10);
+		c.setGradient('#88ddff', '#2266ff', w * 0.5 - 2.5, h - 5, 5, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
+		c.ellipse(w * 0.5 - 2.5, h - 5, 5, 5);
 		c.fillAndStroke();
-		c.setGradient('#88ddff', '#2266ff', 0, h * 0.5 + 20, 10, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
-		c.ellipse(0, h * 0.5 + 20, 10, 10);
+		c.setGradient('#88ddff', '#2266ff', 0, h * 0.5 + 10, 5, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
+		c.ellipse(0, h * 0.5 + 10, 5, 5);
 		c.fillAndStroke();
-		c.setGradient('#88ddff', '#2266ff', w - 10, h * 0.5 + 20, 10, 10, mxConstants.DIRECTION_SOUTH, 1, 1);
-		c.ellipse(w - 10, h * 0.5 + 20, 10, 10);
+		c.setGradient('#88ddff', '#2266ff', w - 5, h * 0.5 + 10, 5, 5, mxConstants.DIRECTION_SOUTH, 1, 1);
+		c.ellipse(w - 5, h * 0.5 + 10, 5, 5);
 		c.fillAndStroke();
 	}
 
@@ -5374,38 +5450,38 @@ mxShapeMockupiCopyArea.prototype.foreground = function(c, w, h, rSize)
 	c.setFillColor(fillColor2);
 	c.setStrokeColor(strokeColor);
 	c.begin();
-	c.moveTo(w * 0.5 - 40, 0 + rSize);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 40 + rSize, 0);
-	c.lineTo(w * 0.5 + 40 - rSize, 0);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 40, rSize);
-	c.lineTo(w * 0.5 + 40, 40 - rSize);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 40 - rSize, 40);
-	c.lineTo(w * 0.5 + 15, 40);
-	c.lineTo(w * 0.5, 55);
-	c.lineTo(w * 0.5 - 15, 40);
-	c.lineTo(w * 0.5 - 40 + rSize, 40);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 40, 40 - rSize);
+	c.moveTo(w * 0.5 - 20, 0 + rSize);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 20 + rSize, 0);
+	c.lineTo(w * 0.5 + 20 - rSize, 0);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 20, rSize);
+	c.lineTo(w * 0.5 + 20, 20 - rSize);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 20 - rSize, 20);
+	c.lineTo(w * 0.5 + 7.5, 20);
+	c.lineTo(w * 0.5, 27.5);
+	c.lineTo(w * 0.5 - 7.5, 20);
+	c.lineTo(w * 0.5 - 20 + rSize, 20);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 20, 20 - rSize);
 	c.close();
 	c.fillAndStroke();
 
 	var fillColor3 = mxUtils.getValue(this.style, mxMockupC.STYLE_FILLCOLOR3, '#00ff00');
-	c.setGradient(fillColor3, fillColor3, w * 0.5 - 40, 0, 80, 20, mxConstants.DIRECTION_SOUTH, 0.8, 0.1);
+	c.setGradient(fillColor3, fillColor3, w * 0.5 - 20, 0, 40, 10, mxConstants.DIRECTION_SOUTH, 0.8, 0.1);
 	c.begin();
-	c.moveTo(w * 0.5 - 40, rSize);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 40 + rSize, 0);
-	c.lineTo(w * 0.5 + 40 - rSize, 0);
-	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 40, rSize);
-	c.lineTo(w * 0.5 + 40, 20);
-	c.lineTo(w * 0.5 - 40, 20);
+	c.moveTo(w * 0.5 - 20, rSize);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 - 20 + rSize, 0);
+	c.lineTo(w * 0.5 + 20 - rSize, 0);
+	c.arcTo(rSize, rSize, 0, 0, 1, w * 0.5 + 20, rSize);
+	c.lineTo(w * 0.5 + 20, 10);
+	c.lineTo(w * 0.5 - 20, 10);
 	c.close();
 	c.fill();
 
 	var fieldText = mxUtils.getValue(this.style, mxMockupC.BUTTON_TEXT, '');
 	var textColor = mxUtils.getValue(this.style, mxMockupC.STYLE_TEXTCOLOR, '#00ff00');
 	c.setFontColor(textColor);
-	c.setFontSize(17);
+	c.setFontSize(8.5);
 
-	c.text(w * 0.5, 17.5, 0, 0, fieldText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
+	c.text(w * 0.5, 8.75, 0, 0, fieldText, mxConstants.ALIGN_CENTER, mxConstants.ALIGN_MIDDLE, 0, null, 0, 0, 0);
 };
 
 mxCellRenderer.prototype.defaultShapes[mxMockupC.SHAPE_ICOPY_AREA] = mxShapeMockupiCopyArea;
@@ -5538,7 +5614,7 @@ mxUtils.extend(mxShapeMockupiPad, mxShape);
  */
 mxShapeMockupiPad.prototype.paintVertexShape = function(c, x, y, w, h)
 {
-	var rSize = 50;
+	var rSize = 25;
 	c.translate(x, y);
 	this.background(c, x, y, w, h, rSize);
 	c.setShadow(false);
@@ -5555,7 +5631,7 @@ mxShapeMockupiPad.prototype.background = function(c, x, y, w, h, rSize)
 
 mxShapeMockupiPad.prototype.foreground = function(c, x, y, w, h, rSize)
 {
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor('#999999');
 
 	c.begin();
@@ -5573,12 +5649,12 @@ mxShapeMockupiPad.prototype.foreground = function(c, x, y, w, h, rSize)
 	c.begin();
 	c.setFillColor('#1f2923');
 	c.setStrokeColor('#18211b');
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 
 	var fillColor = mxUtils.getValue(this.style, mxConstants.STYLE_FILLCOLOR, '');
 	var bgStyle = mxUtils.getValue(this.style, mxMockupC.BG_STYLE, mxMockupC.BG_FLAT_GREEN);
 
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 
 	if (bgStyle === mxMockupC.BG_FLAT_WHITE)
 	{
@@ -5663,7 +5739,7 @@ mxShapeMockupiPad.prototype.foreground = function(c, x, y, w, h, rSize)
 
 		c.setFillColor(fillColor2);
 		c.setStrokeColor(strokeColor2);
-		c.setStrokeWidth(1);
+		c.setStrokeWidth(0.5);
 
 		c.begin();
 		c.moveTo(0, 0);
@@ -6009,15 +6085,12 @@ mxShapeMockupiPad.prototype.foreground = function(c, x, y, w, h, rSize)
 		c.translate( - w * 0.0928, - h * 0.08);
 	}
 
-	c.setStrokeWidth(2);
+	c.setStrokeWidth(1);
 	c.setStrokeColor('#18211b');
 	c.rect(w * 0.0928, h * 0.08, w * 0.8144, h * 0.816);
 	c.stroke();
 
-//	c.rect(w * 0.0928, h * 0.08, w * 0.8144, h * 0.816);
-//	c.fillAndStroke();
-
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setAlpha(0.8);
 	c.setStrokeColor('#dddddd');
 	c.begin();
@@ -6032,24 +6105,24 @@ mxShapeMockupiPad.prototype.foreground = function(c, x, y, w, h, rSize)
 	c.close();	
 	c.stroke();
 
-	rSize = 45;
+	rSize = 22.5;
 	c.begin();
 	c.setStrokeColor('#666666');
 	c.begin();
-	c.moveTo(5, 5 + rSize);
-	c.arcTo(rSize, rSize, 0, 0, 1, 5 + rSize, 5);
-	c.lineTo(w - rSize - 10, 5);
-	c.arcTo(rSize, rSize, 0, 0, 1, w - 5, rSize + 5);
-	c.lineTo(w - 5, h - rSize - 5);
-	c.arcTo(rSize, rSize, 0, 0, 1, w - rSize - 5, h - 5);
-	c.lineTo(rSize + 5, h - 5);
-	c.arcTo(rSize, rSize, 0, 0, 1, 5, h - rSize - 5);
+	c.moveTo(2.5, 2.5 + rSize);
+	c.arcTo(rSize, rSize, 0, 0, 1, 2.5 + rSize, 2.5);
+	c.lineTo(w - rSize - 5, 2.5);
+	c.arcTo(rSize, rSize, 0, 0, 1, w - 2.5, rSize + 2.5);
+	c.lineTo(w - 2.5, h - rSize - 2.5);
+	c.arcTo(rSize, rSize, 0, 0, 1, w - rSize - 2.5, h - 2.5);
+	c.lineTo(rSize + 2.5, h - 2.5);
+	c.arcTo(rSize, rSize, 0, 0, 1, 2.5, h - rSize - 2.5);
 	c.close();	
 	c.stroke();
 
 	c.setAlpha(1);
 	c.ellipse(w * 0.4948, h * 0.0444, w * 0.0103, h * 0.008);
-	c.setStrokeWidth(5);
+	c.setStrokeWidth(2.5);
 	c.setStrokeColor('#000000');
 	c.setFillColor('#000099');
 	c.fillAndStroke();
@@ -6073,9 +6146,9 @@ mxShapeMockupiPad.prototype.foreground = function(c, x, y, w, h, rSize)
 
 	c.begin();
 	c.setAlpha(0.7);
-	c.setStrokeWidth(3);
+	c.setStrokeWidth(1.5);
 	c.setStrokeColor('#dddddd');
-	rSize = 8;
+	rSize = 4;
 	c.roundrect(w * 0.4814, h * 0.9296, w * 0.0371, h * 0.0288, h * 0.00515, h * 0.004);
 	c.stroke();
 };
