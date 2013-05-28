@@ -27,7 +27,7 @@
 			<sources dir="${basedir}/../../war/js/diagramly">
 				<file name="GoogleDrive.js" />
 				<file name="Integration.js" />
-				<file name="rt-client-utils.js" />
+				<!--file name="rt-client-utils.js" /-->
 				<file name="ChatWindow.js" />
 				<file name="Dialogs.js" />
 				<file name="Sidebar.js" />

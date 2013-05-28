@@ -61,6 +61,8 @@
 		var cisco = this.cisco;
 
 		this.addGeneralPalette(true);
+		// Adds Joyent stencils
+		this.addStencilPalette('joyent', 'Joyent', dir + '/joyent/misc.xml', ';fillColor=#FE8000;strokeColor=none');
 		this.addIconfinder();
 		this.addMoreShapes();
 		this.addUmlPalette(false);
@@ -185,6 +187,8 @@
 		this.addStencilPalette('awsNonServiceSpecific', 'AWS / Non Service Specific', dir + '/aws/non_service_specific.xml', ';fillColor=#C5C7C9;strokeColor=none');
 		this.addStencilPalette('awsOnDemandWorkforce', 'AWS / On Demand Workforce', dir + '/aws/on_demand_workforce.xml', ';fillColor=#C5C7C9;strokeColor=none');
 		this.addStencilPalette('awsStorage', 'AWS / Storage', dir + '/aws/storage.xml', ';fillColor=#146EB4;strokeColor=none');
+
+
 
 		for (var i = 0; i < pids.length; i++)
 		{
